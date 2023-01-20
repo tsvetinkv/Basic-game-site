@@ -6,9 +6,10 @@ const result = document.querySelector("#result");
 let isX = true;
 let gameEnded = false;
 let isComputerGame = false;
-const  X = "X" , O = "O";
+const X = "X",
+  O = "O";
 
-const BOARD = [null, null, null, null, null, null, null, null, null,]
+const BOARD = [null, null, null, null, null, null, null, null, null];
 
 let currentBoard = BOARD.slice();
 
@@ -37,11 +38,11 @@ function onTurn(index) {
   } else if (isDraw()) {
     onGameEnd("Draw!");
   } else if (isComputerGame) {
-    minimax(currentBoard, O);
-    //bestMove(currentBoard);
-    // const bestMove = minimax(currentBoard, O).index;
-    // placeXorO(O, bestMove);
-   // console.log(minimax(currentBoard, O).index);
+    const botMove = minimax(currentBoard.slice(), X).index;
+    placeXorO(O, botMove);
+    if (checkIfWinner(currentBoard, O)) {
+      onGameEnd(`Winner is ${O}`);
+    }
   } else {
     isX = !isX;
   }
@@ -69,15 +70,15 @@ function reset() {
   result.innerHTML = "";
 }
 
-function emptyIndexies(board){
-  const freeSpaces = []; 
+function emptyIndexies(board) {
+  const freeSpaces = [];
   board.forEach((td, index) => {
-        if (td === null) {
-          freeSpaces.push(index);
-        }
-      });
+    if (td === null) {
+      freeSpaces.push(index);
+    }
+  });
 
-      return  freeSpaces;
+  return freeSpaces;
 }
 // function emptyIndexies(b)
 // {
@@ -101,55 +102,54 @@ function emptyIndexies(board){
 //   }
 // }
 function minimax(newBoard, player) {
+  var availSpots = emptyIndexies(newBoard);
 
-	var availSpots = emptyIndexies(newBoard);
+  if (checkIfWinner(newBoard, X)) {
+    return { score: -10 };
+  } else if (checkIfWinner(newBoard, O)) {
+    return { score: 10 };
+  } else if (availSpots.length === 0) {
+    return { score: 0 };
+  }
+  var moves = [];
+  for (var i = 0; i < availSpots.length; i++) {
+    var move = {};
+    move.index = availSpots[i];
+    newBoard[availSpots[i]] = player;
 
-	if (checkIfWinner(newBoard, X)) {
-		return {score: -10};
-	} else if (checkIfWinner(newBoard, O)) {
-		return {score: 10};
-	} else if (availSpots.length === 0) {
-		return {score: 0};
-	}
-	var moves = [];
-	for (var i = 0; i < availSpots.length; i++) {
-		var move = {};
-		move.index = newBoard[availSpots[i]];
-		newBoard[availSpots[i]] = player;
+    if (player == O) {
+      var result = minimax(newBoard, X);
+      move.score = result.score;
+    } else {
+      var result = minimax(newBoard, O);
+      move.score = result.score;
+    }
 
-		if (player == O) {
-			var result = minimax(newBoard, X);
-			move.score = result.score;
-		} else {
-			var result = minimax(newBoard, O);
-			move.score = result.score;
-		}
+    newBoard[availSpots[i]] = move.index;
 
-		newBoard[availSpots[i]] = move.index;
+    moves.push(move);
+  }
 
-		moves.push(move);
-	}
+  var bestMove;
+  if (player === O) {
+    var bestScore = -Infinity;
+    for (var i = 0; i < moves.length; i++) {
+      if (moves[i].score > bestScore) {
+        bestScore = moves[i].score;
+        bestMove = i;
+      }
+    }
+  } else {
+    var bestScore = Infinity;
+    for (var i = 0; i < moves.length; i++) {
+      if (moves[i].score < bestScore) {
+        bestScore = moves[i].score;
+        bestMove = i;
+      }
+    }
+  }
 
-	var bestMove;
-	if(player === O) {
-		var bestScore = -Infinity;
-		for(var i = 0; i < moves.length; i++) {
-			if (moves[i].score > bestScore) {
-				bestScore = moves[i].score;
-				bestMove = i;
-			}
-		}
-	} else {
-		var bestScore = Infinity;
-		for(var i = 0; i < moves.length; i++) {
-			if (moves[i].score < bestScore) {
-				bestScore = moves[i].score;
-				bestMove = i;
-			}
-		}
-	}
-
-	return moves[bestMove];
+  return moves[bestMove];
 }
 /*                                                                            */
 
@@ -160,8 +160,7 @@ function placeXorO(player, position) {
 
 function isDraw() {
   let draw = true;
-  currentBoard.forEach((td/*, index*/) => {
-
+  currentBoard.forEach((td /*, index*/) => {
     if (td === null) {
       draw = false;
     }
