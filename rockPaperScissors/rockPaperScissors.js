@@ -2,6 +2,10 @@ const game = () => {
     let pScore = 0;
     let cScore = 0;
 
+    /**
+     * Adds an event listener to each hand that will play the animation when clicked.       
+     * @returns None       
+     */
     const playMatch = () => {
 
       const options = document.querySelectorAll(".options button");
@@ -15,6 +19,12 @@ const game = () => {
         });
       });
 
+      /**
+       * Takes in the player's choice and the computer's choice and determines who won.           
+       * @param {string} playerChoice - the player's choice           
+       * @param {string} computerChoice - the computer's choice           
+       * @returns None           
+       */
       const computerOptions = ["rock", "paper", "scissors"];
   
       options.forEach(option => {
@@ -31,12 +41,19 @@ const game = () => {
             computerHand.src = `./photos/${computerChoice}.png`;
           }, 2000);
 
+          /**
+           * Shakes the player and computer hands.                     
+           */
           playerHand.style.animation = "shakePlayer 2s ease";
           computerHand.style.animation = "shakeComputer 2s ease";
         });
       });
     };
   
+    /**
+     * Updates the score of the game.           
+     * @returns None           
+     */
     const updateScore = () => {
       const playerScore = document.querySelector(".player-score p");
       const computerScore = document.querySelector(".computer-score p");
@@ -44,6 +61,12 @@ const game = () => {
       computerScore.textContent = cScore;
     };
   
+    /**
+     * Compares the player's choice to the computer's choice and determines who wins.           
+     * @param {string} playerChoice - the player's choice           
+     * @param {string} computerChoice - the computer's choice           
+     * @returns None           
+     */
     const compareHands = (playerChoice, computerChoice) => {
 
       const winner = document.querySelector(".winner");

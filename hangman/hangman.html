@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Hangman</title>
+  <meta charset="UTF-8" />
+  <link href="hangman.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+  <a class="btn1" id="goToGames" href="/C:\Users\PC\OneDrive\Картини\Работен плот\html&css\games\Basic-game-site\mainPage\index.html"><span id="goToGamesText">Go to games</span></a>
+  <button id="bg">Change language</button>
+  <div class="wrapper">
+
+    <h1 id="title">Hangman</h1>
+    <p id="description">
+      Use the alphabet below to guess the word, or click hint to get a clue.
+    </p>
+  </div>
+
+  <div class="wrapper">
+    <div class="alphabetButton" id="alphabetButtons"></div>
+    <p id="categoryName"></p>
+    <div id="hold"></div>
+    <p id="mylives"></p>
+    <p id="clue">Clue -</p>
+    <canvas id="stickman">
+      This Text will show if the Browser does NOT support HTML5 Canvas tag
+    </canvas>
+    <div class="container">
+      <button class="btn" id="hint">Hint</button>
+      <button class="btn" id="reset">Play again</button>
+    </div>
+  </div>
+  <script src="hangman.js"></script>
+</body>
+
+</html>

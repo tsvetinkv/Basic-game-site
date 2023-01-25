@@ -1,0 +1,153 @@
+body {
+  font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue",
+    Helvetica, Arial, "Lucida Grande", sans-serif;
+  background-color: #F8EDE3;
+  color: black;
+  text-align: center;
+  height: 100%;
+  font-size: 18px;
+}
+
+.wrappper {
+  width: 100%;
+  margin: 0 auto;
+}
+
+canvas {
+  color: black;
+  border: black dashed 2px;
+  padding: 15px;
+}
+
+h1,
+h2,
+h3 {
+  font-family: "Roboto", sans-serif;
+  font-weight: 100;
+  text-transform: uppercase;
+  margin: 5px 0;
+}
+h1 {
+  font-size: 2.6em;
+}
+
+h2 {
+  font-size: 1.2em;
+}
+
+p {
+  font-size: 1.2em;
+}
+
+Button {
+  background: #F8EDE3;
+  border-radius: 5px;
+  border: solid 1px black;
+  color: black;
+  width: 35px;
+  height: 35px;
+  margin: 0 10px 10px 0;
+  outline: none;
+}
+Button:hover {
+  transition: 0.5s;
+  background: black;
+  border: solid 1px black;
+  color: #F8EDE3;
+}
+
+.selected {
+  background: black;
+  border: solid 1px black;
+  color: #F8EDE3;
+}
+
+.btn {
+  border-radius: 10px;
+  background: #F8EDE3;
+  color: black;
+  border: solid 1px black;
+  text-decoration: none;
+  cursor: pointer;
+  font-size: 1.2em;
+  padding: 10px 10px;
+  width: 180px;
+  height: 50px;
+  margin: 0 10px 10px 0;
+
+  outline: none;
+}
+.btn:hover {
+  transition: 0.5s;
+  background: black;
+  border: solid 1px black;
+  color: #F8EDE3;
+}
+
+#bg {
+  color: #fff;
+  border: 1px solid #000;
+  border-radius: 10px;
+  /* padding: 25px 50px; */
+  width:150px;
+  height:50px;
+  text-align: center;
+  line-height:0.8;
+  margin: 0;
+  background: #000;;
+  transition: 0.4s;
+}
+
+#bg:hover {
+  color: #000;;
+  transform: translate(-0.25rem,-0.25rem);
+  background: #EDCDBB;
+  box-shadow: 0.25rem 0.25rem #000;
+}
+
+#bg:active {
+  transform: translate(0);
+  box-shadow: none;
+}
+
+
+ .btn1 {
+  display: inline-block;
+  border-radius: 4px;
+  background-color: #EDCDBB;
+  border: none;
+  color: #000000;
+  text-align: center;
+  font-size: 17px;
+  padding: 16px;
+  width: 130px;
+  transition: all 0.5s;
+  cursor: pointer;
+  margin: 5px;
+  border-radius: 10px;
+ }
+ 
+ .btn1 span {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.5s;
+ }
+ 
+ .btn1 span:after {
+  content: '»';
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  right: -15px;
+  transition: 0.5s;
+ }
+ 
+ .btn1:hover span {
+  padding-right: 15px;
+ }
+ 
+ .btn1:hover span:after {
+  opacity: 1;
+  right: 0;
+ }
