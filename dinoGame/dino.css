@@ -1,0 +1,42 @@
+body {
+  font-family: "Courier New", Courier, monospace;
+  text-align: center;
+  background: rgb(237,237,237);
+  background: radial-gradient(circle, rgb(252, 250, 251) 0%, rgba(255, 241, 176, 0.955) 100%);
+}
+
+#board {
+  background-color: rgb(247, 247, 247);
+  border: 5px solid black;
+  position: absolute;
+    top:0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin:auto;
+}
+
+button {
+    width: fit-content;
+    min-width: 100px;
+    height: 40px;
+    padding: 8px;
+    border-radius: 5px;
+    border: 2px solid black;
+    box-shadow: 0px 0px 20px -20px;
+    cursor: pointer;
+    background-color: rgba(255, 241, 176, 0.829);
+    transition: all 0.2s ease-in-out 0ms;
+    user-select: none;
+    font-family: 'Poppins', sans-serif;
+  }
+  
+  button:hover {
+    background-color: rgba(255, 248, 218, 0.955);
+    box-shadow: 0px 0px 20px -18px;
+  }
+  
+  button:active {
+    transform: scale(0.95);
+  }
+
