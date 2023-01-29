@@ -15,8 +15,8 @@ let dino = {
   x: dinoX,
   y: dinoY,
   width: dinoWidth,
-  height: dinoHeight
-}
+  height: dinoHeight,
+};
 
 //cactus
 let cactusArray = [];
@@ -40,7 +40,6 @@ let bigCactus1Img;
 let bigCactus2Img;
 let bigCactus3Img;
 
-
 //physics
 let velocityX = -6; //cactus moving left speed
 let velocityY = 0;
@@ -54,13 +53,13 @@ window.onload = function () {
   board.height = boardHeight;
   board.width = boardWidth;
 
-  context = board.getContext("2d"); //used for drawing on the board
+  context = board.getContext("2d");
 
   dinoImg = new Image();
   dinoImg.src = "./img/dino.png";
   dinoImg.onload = function () {
     context.drawImage(dinoImg, dino.x, dino.y, dino.width, dino.height);
-  }
+  };
 
   cactus1Img = new Image();
   cactus1Img.src = "./img/cactus1.png";
@@ -78,17 +77,14 @@ window.onload = function () {
   bigCactus2Img.src = "./img/big-cactus2.png";
 
   bigCactus3Img = new Image();
-  bigCactus3Img.src = "./img/big-cactus3.png"
-
+  bigCactus3Img.src = "./img/big-cactus3.png";
 
   requestAnimationFrame(update);
   setInterval(placeCactus, 1000); //1000 milliseconds = 1 second
 
   document.addEventListener("click", moveDino);
-  document.addEventListener("keydown", (ev) => ev.key === ' ' && moveDino());
-
-
-}
+  document.addEventListener("keydown", (ev) => ev.key === " " && moveDino());
+};
 
 function update() {
   requestAnimationFrame(update);
@@ -106,14 +102,20 @@ function update() {
   for (let i = 0; i < cactusArray.length; i++) {
     let cactus = cactusArray[i];
     cactus.x += velocityX;
-    context.drawImage(cactus.img, cactus.x, cactus.y, cactus.width, cactus.height);
+    context.drawImage(
+      cactus.img,
+      cactus.x,
+      cactus.y,
+      cactus.width,
+      cactus.height
+    );
 
     if (detectCollision(dino, cactus)) {
       gameOver = true;
       dinoImg.src = "./img/dino-dead.png";
       dinoImg.onload = function () {
         context.drawImage(dinoImg, dino.x, dino.y, dino.width, dino.height);
-      }
+      };
     }
   }
 
@@ -133,10 +135,6 @@ function moveDino() {
     //jump
     velocityY = -14;
   }
-  // else if (e.code == "ArrowDown" && dino.y == dinoY) {
-  //     //duck
-  // }
-
 }
 
 function placeCactus() {
@@ -150,37 +148,43 @@ function placeCactus() {
     x: cactusX,
     y: cactusY,
     width: null,
-    height: null
-  }
+    height: null,
+  };
 
   let placeCactusChance = Math.random(); //0 - 0.9999...
 
-  if(placeCactusChance > 0.85){ //15%
+  if (placeCactusChance > 0.85) {
+    //15%
     cactus.img = bigCactus3Img;
     cactus.width = bigCactus3width;
     cactus.height = bigCactusHeight;
     cactusArray.push(cactus);
-  }else if (placeCactusChance > 0.80) { //20% 
+  } else if (placeCactusChance > 0.8) {
+    //20%
     cactus.img = bigCactus2Img;
     cactus.width = bigCactus2width;
     cactus.height = bigCactusHeight;
     cactusArray.push(cactus);
-  } else if (placeCactusChance > 0.75) { //25% 
+  } else if (placeCactusChance > 0.75) {
+    //25%
     cactus.img = bigCactus1Img;
     cactus.width = bigCactus1width;
     cactus.height = bigCactusHeight;
     cactusArray.push(cactus);
-  } else if (placeCactusChance > 0.70) { //30% 
+  } else if (placeCactusChance > 0.7) {
+    //30%
     cactus.img = cactus3Img;
     cactus.width = cactus3Width;
     cactus.height = cactusHeight;
     cactusArray.push(cactus);
-  }else if(placeCactusChance > 0.60){//40%
+  } else if (placeCactusChance > 0.6) {
+    //40%
     cactus.img = cactus2Img;
     cactus.width = cactus2Width;
     cactus.height = cactusHeight;
     cactusArray.push(cactus);
-  }else if(placeCactusChance > 0.40){//60%
+  } else if (placeCactusChance > 0.4) {
+    //60%
     cactus.img = cactus1Img;
     cactus.width = cactus1Width;
     cactus.height = cactusHeight;
@@ -188,13 +192,15 @@ function placeCactus() {
   }
 
   if (cactusArray.length > 7) {
-    cactusArray.shift(); //remove the first element from the array so that the array doesn't constantly grow
+    cactusArray.shift();
   }
 }
 
 function detectCollision(a, b) {
-  return a.x < b.x + b.width && //a's top left corner doesn't reach b's top right corner
+  return (
+    a.x < b.x + b.width && //a's top left corner doesn't reach b's top right corner
     a.x + a.width > b.x && //a's top right corner passes b's top left corner
     a.y < b.y + b.height && //a's top left corner doesn't reach b's bottom left corner
-    a.y + a.height > b.y; //a's bottom left corner passes b's top left corner
+    a.y + a.height > b.y
+  ); //a's bottom left corner passes b's top left corner
 }

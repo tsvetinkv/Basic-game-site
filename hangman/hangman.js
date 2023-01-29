@@ -48,11 +48,7 @@ const translations = {
     win: "ПЕЧЕЛИШ!",
   },
 };
-/**
- * It takes the alphabet, splits it into an array, maps each letter to a button, and then joins the
- * array back into a string.
- * @returns a string of buttons.
- */
+
 function generateButton(letters) {
   let buttons = letters
     .split("")
@@ -75,17 +71,11 @@ function switchLanguage() {
   lang = lang === "en" ? "bg" : "en";
   init();
 }
-/**
- * If the event target is a button, then add the class "selected" to the button.
- * @param event - The event object is a property of the Window object.
- */
+
 function handleClick(event) {
   const isButton = event.target.nodeName === "BUTTON";
   if (isButton) {
-    //console.dir(event.target.id);
-    //console.log(isButton);
     const buttonId = document.getElementById(event.target.id);
-    // buttonId.classList.add("selected");
   }
   return;
 }
@@ -247,11 +237,6 @@ const bgHints = [
   ],
 ];
 
-/**
- * Sets the answer and hint for the next question.
- * @returns None
- */
-
 function setAnswer() {
   const categories = lang === "en" ? enCategories : bgCategories;
   const categoryOrder = Math.floor(Math.random() * enCategories.length);
@@ -263,21 +248,14 @@ function setAnswer() {
   const langQuestions = lang === "en" ? enQuestion : bgQuestion;
   categoryNameJS.innerHTML = langQuestions[categoryOrder];
 
-  //console.log(chosenCategory);
-  //console.log(chosenWord);
   const langHints = lang === "en" ? enHints : bgHints;
   answer = chosenWord;
   hint = langHints[categoryOrder][wordOrder];
   answerDisplay.innerHTML = generateAnswerDisplay(chosenWord);
 }
 
-/* Taking the word and splitting it into an array. Then it is checking if the word has a dash in it.
-If it does it will add a dash to the wordDisplay array. If it doesn't it will add an underscore.
-Then it will join the array together and return it. */
-
 function generateAnswerDisplay(word) {
   var wordArray = word.split("");
-  //console.log(wordArray);
   for (var i = 0; i < answer.length; i++) {
     if (wordArray[i] !== "-") {
       wordDisplay.push("_");
@@ -294,19 +272,13 @@ function showHint() {
 
 buttonHint.addEventListener("click", showHint);
 
-/**
- * This function is the main function that runs the game. It sets the answer, hint, life, wordDisplay,
- * winningCheck, clears the canvas, draws the canvas, sets the hint, sets the lives, sets the answer,
- * generates the buttons, adds an event listener to the container, and logs the answer.
- */
-
 function init() {
   answer = "";
   hint = "";
   life = 10;
   wordDisplay = [];
   winningCheck = "";
-  /* Clearing the canvas. */
+
   context.clearRect(0, 0, 400, 400);
   isGameOver = false;
   titleElement.innerHTML = translations[lang].title;
@@ -325,15 +297,7 @@ function init() {
 
 window.onload = init();
 
-//reset (play again)
 buttonReset.addEventListener("click", init);
-
-/**
- * The function takes the id of the button clicked and checks if it's in the answer. If it is, it
- * replaces the underscore with the letter. If it's not, it subtracts a life.
- * @param event - the event that triggered the function
- * @returns the value of the last expression that was evaluated.
- */
 
 function getLivesText(lives) {
   if (lang === "en") {
@@ -361,10 +325,8 @@ function guess(event) {
     for (var j = 0; j < answer.length; j++) {
       if (guessLetter === answerArray[j]) {
         wordDisplay[j] = guessLetter;
-        //   console.log(guessWord);
         answerDisplay.innerHTML = wordDisplay.join(" ");
         winningCheck = wordDisplay.join("");
-        //console.log(winningCheck)
         counter += 1;
       }
     }
@@ -387,21 +349,14 @@ function guess(event) {
   } else {
     return;
   }
-  // console.log(wordDisplay);
-  //console.log(counter);
-  //console.log(life);
   if (answer === winningCheck) {
     livesDisplay.innerHTML = translations[lang].win;
-    isGameOver = true
+    isGameOver = true;
   }
 }
 
 container.addEventListener("click", guess);
 
-// Hangman
-/**
- * The function animate() calls the function that is stored in the array drawArray at the index life.
- */
 function animate() {
   drawArray[life]();
 }
@@ -413,27 +368,6 @@ function canvas() {
   context.strokeStyle = "black";
   context.lineWidth = 2;
 }
-/**
- * The head() function draws a circle on the canvas element.
- *
- * The first line of the function gets the canvas element by its ID.
- *
- * The second line gets the 2D drawing context of the canvas element.
- *
- * The third line starts a new path by calling the beginPath() method.
- *
- * The fourth line creates a circle by calling the arc() method.
- *
- * The fifth line draws the path by calling the stroke() method.
- *
- * The arc() method takes six parameters:
- *
- * x - The x-coordinate of the center of the circle
- * y - The y-coordinate of the center of the circle
- * r - The radius of the circle
- * sAngle - The starting angle, in radians (0 is at the 3 o'clock position of the arc's circle)
- * eAngle - The ending angle, in rad
- */
 
 function head() {
   myStickman = document.getElementById("stickman");
@@ -443,18 +377,10 @@ function head() {
   context.stroke();
 }
 
-/**
- * It draws a line from point A to point B
- * @param  - The x coordinate of the starting point of the line.
- * @param  - The y-coordinate of the starting point of the line.
- * @param  - The x coordinate of the end point of the line.
- * @param  - The y-coordinate of the end point of the line.
- */
 function draw($pathFromx, $pathFromy, $pathTox, $pathToy) {
   context.moveTo($pathFromx, $pathFromy);
   context.lineTo($pathTox, $pathToy);
   context.stroke();
-  //context.strokeStyle = "black";
 }
 
 function frame1() {
