@@ -7,7 +7,7 @@ body {
 
 #board {
   background-color: rgb(247, 247, 247);
-  border: 5px solid black;
+  border-bottom: 3px solid black;
   position: absolute;
     top:0;
     bottom: 0;
@@ -39,4 +39,3 @@ button {
   button:active {
     transform: scale(0.95);
   }
-

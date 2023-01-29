@@ -1,7 +1,7 @@
 //board
 let board;
-let boardWidth = 700;
-let boardHeight = 380;
+let boardWidth = 520;
+let boardHeight = 370;
 let context;
 
 //dino
@@ -21,36 +21,30 @@ let dino = {
 //cactus
 let cactusArray = [];
 
-let cactus1Width = 32;
-let cactus2Width = 68;
-let cactus3Width = 100;
+let cactus1Width = 42;
+let cactus2Width = 65;
+let cactus3Width = 95;
+let bigCactus1width = 49;
+let bigCactus2width = 95;
+let bigCactus3width = 128;
 
-let cactusHeight = 75;
-let cactusX = 800;
+let cactusHeight = 98;
+let bigCactusHeight = 120;
+let cactusX = 600;
 let cactusY = boardHeight - cactusHeight;
 
 let cactus1Img;
 let cactus2Img;
 let cactus3Img;
-//clouds
-// let cloudArray = [];
-// let cloudWidth = 50;
-// let cloudHeight = 80;
-// let cloudX = 500;
-// let cloudY = 5;
-// let cloudImg;
+let bigCactus1Img;
+let bigCactus2Img;
+let bigCactus3Img;
 
-// let cloud = {
-//   x: cloudX,
-//   y: cloudY,
-//   width: cloudWidth,
-//   height: cloudHeight
-// }
 
 //physics
-let velocityX = -7; //cactus moving left speed
+let velocityX = -6; //cactus moving left speed
 let velocityY = 0;
-let gravity = 0.50;
+let gravity = 0.48;
 
 let gameOver = false;
 let score = 0;
@@ -77,20 +71,21 @@ window.onload = function () {
   cactus3Img = new Image();
   cactus3Img.src = "./img/cactus3.png";
 
+  bigCactus1Img = new Image();
+  bigCactus1Img.src = "./img/big-cactus1.png";
+
+  bigCactus2Img = new Image();
+  bigCactus2Img.src = "./img/big-cactus2.png";
+
+  bigCactus3Img = new Image();
+  bigCactus3Img.src = "./img/big-cactus3.png"
+
+
   requestAnimationFrame(update);
   setInterval(placeCactus, 1000); //1000 milliseconds = 1 second
 
   document.addEventListener("click", moveDino);
-
-  cloudImg = new Image();
-  cloudImg.src = "./img/cloud.png";
-
-//   requestAnimationFrame(update);
- // setInterval(placeCloud, 1000);
-
-  // cloudImg.onload = function () {
-  //   context.drawImage(cloudImg, cloud.x, cloud.y, cloud.width, cloud.height);
-  // }
+  document.addEventListener("keydown", (ev) => ev.key === ' ' && moveDino());
 
 
 }
@@ -121,13 +116,7 @@ function update() {
       }
     }
   }
-//cloud
-// context.drawImage(cloudImg, cloud.x, cloud.y, cloud.width, cloud.height);
-// for (let i = 0; i < cloudArray.length; i++) {
-//     let cloud = cloudArrayArray[i];
-//     cloud.x += velocityX;
-//     context.drawImage(cloud.img, cloud.x, cloud.y, cloud.width, cloud.height);
-//   }
+
   //score
   context.fillStyle = "black";
   context.font = "20px courier";
@@ -142,7 +131,7 @@ function moveDino() {
 
   if (dino.y == dinoY) {
     //jump
-    velocityY = -13;
+    velocityY = -14;
   }
   // else if (e.code == "ArrowDown" && dino.y == dinoY) {
   //     //duck
@@ -161,53 +150,51 @@ function placeCactus() {
     x: cactusX,
     y: cactusY,
     width: null,
-    height: cactusHeight
+    height: null
   }
 
   let placeCactusChance = Math.random(); //0 - 0.9999...
 
-  if (placeCactusChance > .90) { //10% you get cactus3
+  if(placeCactusChance > 0.85){ //15%
+    cactus.img = bigCactus3Img;
+    cactus.width = bigCactus3width;
+    cactus.height = bigCactusHeight;
+    cactusArray.push(cactus);
+  }else if (placeCactusChance > 0.80) { //20% 
+    cactus.img = bigCactus2Img;
+    cactus.width = bigCactus2width;
+    cactus.height = bigCactusHeight;
+    cactusArray.push(cactus);
+  } else if (placeCactusChance > 0.75) { //25% 
+    cactus.img = bigCactus1Img;
+    cactus.width = bigCactus1width;
+    cactus.height = bigCactusHeight;
+    cactusArray.push(cactus);
+  } else if (placeCactusChance > 0.70) { //30% 
     cactus.img = cactus3Img;
     cactus.width = cactus3Width;
+    cactus.height = cactusHeight;
     cactusArray.push(cactus);
-  } else if (placeCactusChance > .70) { //30% you get cactus2
+  }else if(placeCactusChance > 0.60){//40%
     cactus.img = cactus2Img;
     cactus.width = cactus2Width;
+    cactus.height = cactusHeight;
     cactusArray.push(cactus);
-  } else if (placeCactusChance > .50) { //50% you get cactus1
+  }else if(placeCactusChance > 0.40){//60%
     cactus.img = cactus1Img;
     cactus.width = cactus1Width;
+    cactus.height = cactusHeight;
     cactusArray.push(cactus);
   }
 
-  if (cactusArray.length > 8) {
+  if (cactusArray.length > 7) {
     cactusArray.shift(); //remove the first element from the array so that the array doesn't constantly grow
   }
 }
-// function placeCloud(){
 
-//     let cloud = {
-//         img: cloudImg,
-//         x: null,
-//         y: cloudY,
-//         width: cloudWidth,
-//         height: cloudHeight
-//       }
-
-//       let placeCloud = Math.random() * 100;
-
-     
-//        cloud.x = placeCloud
-//         cactusArray.push(cloud);
-      
-    
-//       if (cloudArray.length > 10) {
-//         cloudArray.shift(); //remove the first element from the array so that the array doesn't constantly grow
-//       }
-// }
 function detectCollision(a, b) {
   return a.x < b.x + b.width && //a's top left corner doesn't reach b's top right corner
     a.x + a.width > b.x && //a's top right corner passes b's top left corner
-    //   a.y < b.y + b.height &&  //a's top left corner doesn't reach b's bottom left corner
+    a.y < b.y + b.height && //a's top left corner doesn't reach b's bottom left corner
     a.y + a.height > b.y; //a's bottom left corner passes b's top left corner
 }
