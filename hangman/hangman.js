@@ -16,36 +16,38 @@ const changeLanguage = document.getElementById("bg");
 let lang = "en";
 const BG_LETTERS = "абвгдежзийклмнопрстуфхчцшщъьюя";
 const EN_LETTERS = "abcdefghijklmnopqrstuvwxyz";
-const titleElement = document.querySelector('#title');
+const titleElement = document.querySelector("#title");
 const goToGames = document.getElementById("goToGames");
-const goToGamesText = document.getElementById("goToGamesText")
+const goToGamesText = document.getElementById("goToGamesText");
 const description = document.getElementById("description");
+let isGameOver = false;
 
 const translations = {
   en: {
     title: "Hangman",
-    description: "Use the alphabet below to guess the word, or click hint to get a clue.",
+    description:
+      "Use the alphabet below to guess the word, or click hint to get a clue.",
     hint: "Hint",
     letters: "abcdefghijklmnopqrstuvwxyz",
     goToGamesText: "Go to games",
     newGame: "Play again",
     clue: "clue",
-    gameOver: 'GAME OVER!',
-    win: 'YOU WIN!'
+    gameOver: "GAME OVER!",
+    win: "YOU WIN!",
   },
   bg: {
     title: "Бесеница",
-    description: "Използвайте азбуката по-долу, за да отгатнете думата, или щракнете бутона за подсказка",
+    description:
+      "Използвайте азбуката по-долу, за да отгатнете думата, или щракнете бутона за подсказка",
     hint: "Подсказка",
     letters: "абвгдежзийклмнопрстуфхчцшщъьюя",
     goToGamesText: "Kъм игрите",
     newGame: "Нова игра",
     clue: "Подсказка",
     gameOver: "ЗАГУБИ!",
-    win: 'ПЕЧЕЛИШ!'
-   
+    win: "ПЕЧЕЛИШ!",
   },
-}
+};
 /**
  * It takes the alphabet, splits it into an array, maps each letter to a button, and then joins the
  * array back into a string.
@@ -83,9 +85,17 @@ function handleClick(event) {
     //console.dir(event.target.id);
     //console.log(isButton);
     const buttonId = document.getElementById(event.target.id);
-    buttonId.classList.add("selected");
+    // buttonId.classList.add("selected");
   }
   return;
+}
+
+function keyboardInput(letter) {
+  if (!translations[lang].letters.includes(letter)) {
+    return;
+  }
+  const letterButton = document.getElementById(letter);
+  letterButton.click();
 }
 
 //word array
@@ -172,13 +182,13 @@ const bgQuestion = [
 
 const bgCategories = [
   [
-    "слънчево затъмнение",
+    "слънчево-затъмнение",
     "супер-луна",
     "въздушни-знаци",
     "земни-знаци",
     "елементи",
     "огнени-знаци",
-    "водни знаци",
+    "водни-знаци",
     "зодиак",
   ],
   ["кон", "жираф", "мечка", "зебра", "ленивец", "слон"],
@@ -214,7 +224,7 @@ const bgHints = [
     "Има козина и обича да лови сьомга.",
     "Черно с бели ивици и живее в открити тревисти равнини.",
     "Най-мързеливото и най-упоритото същество на света.",
-    "Голямо животно което има уста но не яде с нея."
+    "Голямо животно което има уста но не яде с нея.",
   ],
   [
     "Столицата на Испания",
@@ -234,7 +244,7 @@ const bgHints = [
     "Извит и жълт плод",
     "Меко, сладко и червено",
     "Плод който има способността да запазва зрението и да го лекува",
-  ]
+  ],
 ];
 
 /**
@@ -243,19 +253,19 @@ const bgHints = [
  */
 
 function setAnswer() {
-  const categories = lang === 'en' ? enCategories : bgCategories;
+  const categories = lang === "en" ? enCategories : bgCategories;
   const categoryOrder = Math.floor(Math.random() * enCategories.length);
   const chosenCategory = categories[categoryOrder];
   const wordOrder = Math.floor(Math.random() * chosenCategory.length);
   const chosenWord = chosenCategory[wordOrder];
 
   const categoryNameJS = document.getElementById("categoryName");
-  const langQuestions = lang === 'en' ? enQuestion : bgQuestion;
+  const langQuestions = lang === "en" ? enQuestion : bgQuestion;
   categoryNameJS.innerHTML = langQuestions[categoryOrder];
 
   //console.log(chosenCategory);
   //console.log(chosenWord);
-  const langHints = lang === 'en' ? enHints : bgHints;
+  const langHints = lang === "en" ? enHints : bgHints;
   answer = chosenWord;
   hint = langHints[categoryOrder][wordOrder];
   answerDisplay.innerHTML = generateAnswerDisplay(chosenWord);
@@ -298,6 +308,7 @@ function init() {
   winningCheck = "";
   /* Clearing the canvas. */
   context.clearRect(0, 0, 400, 400);
+  isGameOver = false;
   titleElement.innerHTML = translations[lang].title;
   description.innerHTML = translations[lang].description;
   buttonHint.innerHTML = translations[lang].hint;
@@ -309,6 +320,7 @@ function init() {
   generateButton(translations[lang].letters);
   setAnswer();
   container.addEventListener("click", handleClick);
+  document.addEventListener("keydown", (el) => keyboardInput(el.key));
 }
 
 window.onload = init();
@@ -324,16 +336,23 @@ buttonReset.addEventListener("click", init);
  */
 
 function getLivesText(lives) {
-  if(lang === 'en') {
-    console.log('jldsakfjaljf');	
-    return `You have ${lives} live${lives === 1 ? '' : 's'}`
+  if (lang === "en") {
+    console.log("jldsakfjaljf");
+    return `You have ${lives} live${lives === 1 ? "" : "s"}`;
   }
 
-  return `Ти имаш ${lives} живот${lives === 1 ? '' : 'a'}`
+  return `Ти имаш ${lives} живот${lives === 1 ? "" : "a"}`;
 }
 
 function guess(event) {
+  const isSelected = event.target.classList.contains("selected");
+
+  if (isSelected || isGameOver) {
+    return;
+  }
+  event.target.classList.add("selected");
   const guessLetter = event.target.id;
+
   console.log(answer);
   const answerArray = answer.split("");
   var counter = 0;
@@ -363,6 +382,7 @@ function guess(event) {
     } else {
       answerDisplay.innerHTML = answer;
       livesDisplay.innerHTML = translations[lang].gameOver;
+      isGameOver = true;
     }
   } else {
     return;
@@ -372,7 +392,7 @@ function guess(event) {
   //console.log(life);
   if (answer === winningCheck) {
     livesDisplay.innerHTML = translations[lang].win;
-    return;
+    isGameOver = true
   }
 }
 
