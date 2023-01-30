@@ -92,7 +92,6 @@ function update() {
     return;
   }
   context.clearRect(0, 0, board.width, board.height);
-
   //dino
   velocityY += gravity;
   dino.y = Math.min(dino.y + velocityY, dinoY); //apply gravity to current dino.y, making sure it doesn't exceed the ground
@@ -153,38 +152,38 @@ function placeCactus() {
 
   let placeCactusChance = Math.random(); //0 - 0.9999...
 
-  if (placeCactusChance > 0.85) {
-    //15%
+  if (placeCactusChance > 0.95) {
+    //5%
     cactus.img = bigCactus3Img;
     cactus.width = bigCactus3width;
     cactus.height = bigCactusHeight;
     cactusArray.push(cactus);
-  } else if (placeCactusChance > 0.8) {
-    //20%
+  } else if (placeCactusChance > 0.9) {
+    //10%
     cactus.img = bigCactus2Img;
     cactus.width = bigCactus2width;
     cactus.height = bigCactusHeight;
     cactusArray.push(cactus);
-  } else if (placeCactusChance > 0.75) {
-    //25%
+  } else if (placeCactusChance > 0.8) {
+    //20%
     cactus.img = bigCactus1Img;
     cactus.width = bigCactus1width;
     cactus.height = bigCactusHeight;
     cactusArray.push(cactus);
-  } else if (placeCactusChance > 0.7) {
-    //30%
+  } else if (placeCactusChance > 0.75) {
+    //25%
     cactus.img = cactus3Img;
     cactus.width = cactus3Width;
     cactus.height = cactusHeight;
     cactusArray.push(cactus);
-  } else if (placeCactusChance > 0.6) {
-    //40%
+  } else if (placeCactusChance > 0.7) {
+    //30%
     cactus.img = cactus2Img;
     cactus.width = cactus2Width;
     cactus.height = cactusHeight;
     cactusArray.push(cactus);
-  } else if (placeCactusChance > 0.4) {
-    //60%
+  } else if (placeCactusChance > 0.5) {
+    //50%
     cactus.img = cactus1Img;
     cactus.width = cactus1Width;
     cactus.height = cactusHeight;
@@ -194,6 +193,8 @@ function placeCactus() {
   if (cactusArray.length > 7) {
     cactusArray.shift();
   }
+
+  velocityX = velocityX - 0.06;
 }
 
 function detectCollision(a, b) {
