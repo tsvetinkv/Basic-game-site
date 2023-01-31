@@ -11,6 +11,11 @@ body {
   background: #f8ede3;
 }
 
+h1 {
+  font-family: cursive;
+  text-align: center;
+}
+
 .memory-game {
   padding: 40px;
   width: 640px;
@@ -59,6 +64,7 @@ body {
 }
 
 .btn {
+  font-family: cursive;
   color: #5f00ac;
   margin: 10px;
   width: 140px;

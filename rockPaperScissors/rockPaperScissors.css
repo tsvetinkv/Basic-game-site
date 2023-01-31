@@ -3,7 +3,6 @@
   padding: 0;
   box-sizing: border-box;
 }
-
 section {
   height: 100vh;
   background-image: linear-gradient(
@@ -47,7 +46,7 @@ section {
     border-radius: 3px;
     cursor: pointer;
   } */
-.match button {
+button {
   border: none;
   outline: none;
   cursor: pointer;
@@ -83,13 +82,13 @@ button:active {
   transform: translateY(5px);
   box-shadow: 0px 0px 0px 0px #a29bfe;
 }
-.match {
+/* .match {
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   transition: opacity 0.5s ease 0.5s;
-}
+} */
 .winner {
   color: rgb(224, 224, 224);
   text-align: center;
