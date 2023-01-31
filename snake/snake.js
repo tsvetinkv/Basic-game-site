@@ -4,10 +4,9 @@ const scoreText = document.querySelector("#scoreText");
 const resetBtn = document.querySelector("#resetBtn");
 const gameWidth = gameBoard.width;
 const gameHeight = gameBoard.height;
-const boardBackground = "white";
+const boardBackground = "black";
 const snakeColor = "rgb(0, 255, 0)";
 const snakeBorder = "rgb(0, 78, 0);";
-const foodColor = "red";
 const unitSize = 25;
 let running = false;
 let xVelocity = unitSize;
@@ -66,9 +65,6 @@ function drawFood() {
   const apple = new Image();
   apple.src = "./img/apple.png";
   ctx.drawImage(apple, foodX, foodY, unitSize, unitSize);
-
-  // ctx.fillStyle = foodColor;
-  // ctx.fillRect(foodX, foodY, unitSize, unitSize);
 }
 function moveSnake() {
   const head = { x: snake[0].x + xVelocity, y: snake[0].y + yVelocity };
@@ -87,10 +83,9 @@ function drawSnake() {
   ctx.fillStyle = snakeColor;
   ctx.strokeStyle = snakeBorder;
   snake.forEach((snakePart) => {
-    ctx.beginPath();
-    ctx.roundRect(snakePart.x, snakePart.y, unitSize, unitSize, [8]);
-    ctx.stroke();
-    ctx.fill();
+    ctx.fillRect(snakePart.x, snakePart.y, unitSize, unitSize);
+    ctx.strokeRect(snakePart.x, snakePart.y, unitSize, unitSize);
+
   });
 }
 function changeDirection(event) {
@@ -146,8 +141,8 @@ function checkGameOver() {
   }
 }
 function displayGameOver() {
-  ctx.font = "50px MV Boli";
-  ctx.fillStyle = "black";
+  ctx.font = "45px Permanent Marker, cursive";
+  ctx.fillStyle = "white";
   ctx.textAlign = "center";
   ctx.fillText("GAME OVER!", gameWidth / 2, gameHeight / 2);
   running = false;
