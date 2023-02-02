@@ -34,6 +34,7 @@ const translations = {
     clue: "clue",
     gameOver: "GAME OVER!",
     win: "YOU WIN!",
+    changelang: "Change language"
   },
   bg: {
     title: "Бесеница",
@@ -41,11 +42,13 @@ const translations = {
       "Използвайте азбуката по-долу, за да отгатнете думата, или щракнете бутона за подсказка",
     hint: "Подсказка",
     letters: "абвгдежзийклмнопрстуфхчцшщъьюя",
-    goToGamesText: "Kъм игрите",
+    goToGamesText: "Към игрите",
     newGame: "Нова игра",
     clue: "Подсказка",
     gameOver: "ЗАГУБИ!",
     win: "ПЕЧЕЛИШ!",
+    changelang: "Смени езика"
+
   },
 };
 
@@ -286,6 +289,7 @@ function init() {
   buttonHint.innerHTML = translations[lang].hint;
   buttonReset.innerHTML = translations[lang].newGame;
   goToGamesText.innerHTML = translations[lang].goToGamesText;
+  changeLanguage.innerHTML = translations[lang].changelang;
   canvas();
   containerHint.innerHTML = `${translations[lang].clue} -`;
   livesDisplay.innerHTML = getLivesText(life);
@@ -305,7 +309,7 @@ function getLivesText(lives) {
     return `You have ${lives} live${lives === 1 ? "" : "s"}`;
   }
 
-  return `Ти имаш ${lives} живот${lives === 1 ? "" : "a"}`;
+  return `Ти имаш ${lives} живот${lives === 1 ? "" : "а"}`;
 }
 
 function guess(event) {
