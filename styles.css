@@ -155,7 +155,7 @@ figure img {
 
 figure figcaption {
   position: absolute;
-  bottom: -190px;
+  bottom: -220px;
   left: -10px;
   right: -10px;
   margin: 0;
@@ -178,12 +178,12 @@ figure figcaption p {
 }
 
 .longer {
-  bottom: -240px;
+  bottom: -274px;
 
 }
 
 .mid {
-  bottom: -220px;
+  bottom: -250px;
 }
 
 
