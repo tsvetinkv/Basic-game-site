@@ -1,7 +1,5 @@
 body {
-  font-family: cursive;
-  /* font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue",
-    Helvetica, Arial, "Lucida Grande", sans-serif; */
+  font-family: 'Courier New', monospace;
   background-color: #F8EDE3;
   color: black;
   text-align: center;
@@ -75,7 +73,7 @@ Button:hover {
   width: 180px;
   height: 50px;
   margin: 0 10px 10px 0;
-  font-family: cursive;
+  font-family: 'Courier New', monospace;
   outline: none;
 }
 .btn:hover {
