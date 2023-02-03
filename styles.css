@@ -1,7 +1,7 @@
 * {
-  font-family: 'Courier New', monospace;
-  font-size: large;
-}
+  font-family: 'Garamond', serif;
+  /* font-size:x-large;*/
+} 
 
 body,
 html {
@@ -138,7 +138,7 @@ figure h1 {
   margin: 0;
   padding: 0;
   color: rgb(0, 0, 0);
-  font-size: 35px;
+  font-size: 45px;
   font-weight: 100;
   line-height: 1;
   opacity: 1;
@@ -155,7 +155,7 @@ figure img {
 
 figure figcaption {
   position: absolute;
-  bottom: -220px;
+  bottom: -240px;
   left: -10px;
   right: -10px;
   margin: 0;
@@ -163,6 +163,7 @@ figure figcaption {
   background-color: rgba(0, 0, 0, 0.85);
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
   color: white;
+  font-size: 25px;
   line-height: 1;
   transition: 0.25s;
 }
@@ -173,17 +174,17 @@ figure figcaption h3 {
 }
 
 figure figcaption p {
-  font-size: 14px;
+  font-size: 20px;
   line-height: 1.75;
 }
 
 .longer {
-  bottom: -274px;
+  bottom: -310px;
 
 }
 
 .mid {
-  bottom: -250px;
+  bottom: -270px;
 }
 
 
