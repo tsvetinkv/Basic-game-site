@@ -1,25 +1,25 @@
 //const
-const container = document.getElementById("alphabetButtons");
-var answerDisplay = document.getElementById("hold");
-var answer = "";
-var hint = "";
-var life = 10;
-var wordDisplay = [];
-var winningCheck = "";
+const lettersButtons = document.getElementById("alphabetButtons");
+let answerDisplay = document.getElementById("hold");
+let answer = "";
+let hint = "";
+let life = 10;
+let wordDisplay = [];
+let winningCheck = "";
 const containerHint = document.getElementById("clue");
 const buttonHint = document.getElementById("hint");
 const buttonReset = document.getElementById("reset");
 const livesDisplay = document.getElementById("mylives");
-var myStickman = document.getElementById("stickman");
-var context = myStickman.getContext("2d");
+let myStickman = document.getElementById("stickman");
+let context = myStickman.getContext("2d");
 const changeLanguage = document.getElementById("bg");
-let lang = "en";
 const BG_LETTERS = "абвгдежзийклмнопрстуфхчцшщъьюя";
 const EN_LETTERS = "abcdefghijklmnopqrstuvwxyz";
-const titleElement = document.querySelector("#title");
+const titleElement = document.getElementById("title");
 const goToGames = document.getElementById("goToGames");
 const goToGamesText = document.getElementById("goToGamesText");
 const description = document.getElementById("description");
+let lang = "en";
 let isGameOver = false;
 
 const translations = {
@@ -34,7 +34,7 @@ const translations = {
     clue: "clue",
     gameOver: "GAME OVER!",
     win: "YOU WIN!",
-    changelang: "Change language"
+    changelang: "Change language",
   },
   bg: {
     title: "Бесеница",
@@ -47,8 +47,7 @@ const translations = {
     clue: "Подсказка",
     gameOver: "ЗАГУБИ!",
     win: "ПЕЧЕЛИШ!",
-    changelang: "Смени езика"
-
+    changelang: "Смени езика",
   },
 };
 
@@ -66,7 +65,7 @@ function generateButton(letters) {
     )
     .join("");
 
-  container.innerHTML = buttons;
+  lettersButtons.innerHTML = buttons;
 }
 changeLanguage.addEventListener("click", switchLanguage);
 
@@ -74,6 +73,7 @@ function switchLanguage() {
   lang = lang === "en" ? "bg" : "en";
   init();
 }
+
 
 function handleClick(event) {
   const isButton = event.target.nodeName === "BUTTON";
@@ -258,8 +258,8 @@ function setAnswer() {
 }
 
 function generateAnswerDisplay(word) {
-  var wordArray = word.split("");
-  for (var i = 0; i < answer.length; i++) {
+  let wordArray = word.split("");
+  for (let i = 0; i < answer.length; i++) {
     if (wordArray[i] !== "-") {
       wordDisplay.push("_");
     } else {
@@ -295,7 +295,7 @@ function init() {
   livesDisplay.innerHTML = getLivesText(life);
   generateButton(translations[lang].letters);
   setAnswer();
-  container.addEventListener("click", handleClick);
+  lettersButtons.addEventListener("click", handleClick);
   document.addEventListener("keydown", (el) => keyboardInput(el.key));
 }
 
@@ -323,10 +323,10 @@ function guess(event) {
 
   console.log(answer);
   const answerArray = answer.split("");
-  var counter = 0;
+  let counter = 0;
 
   if (life > 0) {
-    for (var j = 0; j < answer.length; j++) {
+    for (let j = 0; j < answer.length; j++) {
       if (guessLetter === answerArray[j]) {
         wordDisplay[j] = guessLetter;
         answerDisplay.innerHTML = wordDisplay.join(" ");
@@ -359,7 +359,7 @@ function guess(event) {
   }
 }
 
-container.addEventListener("click", guess);
+lettersButtons.addEventListener("click", guess);
 
 function animate() {
   drawArray[life]();
@@ -423,7 +423,7 @@ function leftLeg() {
   draw(60, 70, 20, 100);
 }
 
-var drawArray = [
+let drawArray = [
   rightLeg,
   leftLeg,
   rightArm,
