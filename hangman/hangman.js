@@ -17,7 +17,6 @@ const BG_LETTERS = "абвгдежзийклмнопрстуфхчцшщъьюя
 const EN_LETTERS = "abcdefghijklmnopqrstuvwxyz";
 const titleElement = document.getElementById("title");
 const goToGames = document.getElementById("goToGames");
-const goToGamesText = document.getElementById("goToGamesText");
 const description = document.getElementById("description");
 let lang = "en";
 let isGameOver = false;
@@ -29,7 +28,6 @@ const translations = {
       "Use the alphabet below to guess the word, or click hint to get a clue.",
     hint: "Hint",
     letters: "abcdefghijklmnopqrstuvwxyz",
-    goToGamesText: "Go to games",
     newGame: "Play again",
     clue: "clue",
     gameOver: "GAME OVER!",
@@ -42,7 +40,6 @@ const translations = {
       "Използвайте азбуката по-долу, за да отгатнете думата или натиснете бутона за подсказка",
     hint: "Подсказка",
     letters: "абвгдежзийклмнопрстуфхчцшщъьюя",
-    goToGamesText: "Към игрите",
     newGame: "Нова игра",
     clue: "Подсказка",
     gameOver: "ЗАГУБИ!",
@@ -288,7 +285,6 @@ function init() {
   description.innerHTML = translations[lang].description;
   buttonHint.innerHTML = translations[lang].hint;
   buttonReset.innerHTML = translations[lang].newGame;
-  goToGamesText.innerHTML = translations[lang].goToGamesText;
   changeLanguage.innerHTML = translations[lang].changelang;
   canvas();
   containerHint.innerHTML = `${translations[lang].clue} -`;
@@ -435,3 +431,18 @@ let drawArray = [
   frame2,
   frame1,
 ];
+
+const menu = document.getElementById("main-menu");
+let lastScrollTop = 0;
+
+window.addEventListener("scroll", function(){
+   let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+   if (scrollTop > lastScrollTop){
+      // user is scrolling down
+      menu.classList.add("hidden");
+   } else {
+      // user is scrolling up
+      menu.classList.remove("hidden");
+   }
+   lastScrollTop = scrollTop;
+});

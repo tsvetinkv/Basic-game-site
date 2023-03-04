@@ -1,49 +1,60 @@
-<!-- <!DOCTYPE html> -->
+<!DOCTYPE html>
 <html>
+  <head>
+    <title>Tic Tac Toe</title>
+    <meta
+      name="description"
+      content="A fun and challenging Tic Tac Toe game for all ages"
+    />
+    <meta name="keywords" content="Tic Tac Toe, game, fun, challenge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" type="text/css" href="ticTacToe.css" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="navigation">
+        <a href="/">Home</a>
+        <a href="/rockPaperScissors">Rock, paper, scissors</a>
+        <a href="/hangman">Hangman</a>
+        <a href="/dinoGame">Dino</a>
+        <a href="/snake">Snake</a>
+        <a href="/memoryGame">Memory game</a>
+      </div>
+      <h1 id="result"></h1>
+    </div>
 
-<head>
-	<title>Tic Tac Toe</title>
-	<link rel="stylesheet" type="text/css" href="ticTacToe.css">
-</head>
+    <h1 id="result"></h1>
+    <hr />
 
-<body>
-	<h1 id="result"></h1>
-	<hr>
+    <div class="buttonGame">
+      <button class="button" id="1vs1">1 VS 1</button>
+      <button class="button" id="computer">Computer</button>
+      <button class="button" id="reset">Reset</button>
+      <a class="button" href="/">Go back to games</a>
+    </div>
 
-	<div class="buttonGame">
-		<button class="button" id="1vs1">1 VS 1</button>
-		<button class="button" id="computer">Computer</button>
-		<button class="button" id="reset">Reset</button>
-		<a class="button"
-			href="/">Go back
-			to games</a>
-	</div>
+    <div class="tableGame">
+      <table>
+        <tr>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
 
-	<div class="tableGame">
-		<table>
-			<tr>
-				<td id="0"></td>
-				<td id="1"></td>
-				<td id="2"></td>
+        <tr>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
 
-			</tr>
+        <tr>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+      </table>
+    </div>
 
-			<tr>
-				<td id="3"></td>
-				<td id="4"></td>
-				<td id="5"></td>
-			</tr>
-
-			<tr>
-				<td id="6"></td>
-				<td id="7"></td>
-				<td id="8"></td>
-			</tr>
-		</table>
-	</div>
-
-
-	<script type="text/javascript" , src="ticTacToe.js"></script>
-</body>
-
+    <script type="text/javascript" , src="ticTacToe.js"></script>
+  </body>
 </html>

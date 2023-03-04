@@ -1,79 +1,95 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
 
-<head>
-  <meta charset="UTF-8">
+    <title>Memory Game</title>
 
-  <title>Memory Game</title>
+    <link rel="stylesheet" href="memoryGame.css" />
+  </head>
 
-  <link rel="stylesheet" href="memoryGame.css">
-</head>
+  <body>
+    <div class="container">
+      <div class="navigation" id="main-menu">
+        <a href="/">Home</a>
+        <a href="/ticTacToe">Tic tac toe</a>
+        <a href="/rockPaperScissors">Rock, paper, scissors</a>
+        <a href="/hangman">Hangman</a>
+        <a href="/dinoGame">Dino</a>
+        <a href="/snake">Snake</a>
+      </div>
+    </div>
+    <h1>Memory Game</h1>
+    <section class="memory-game">
+      <div class="memory-card" data-card="sun">
+        <img class="front-face" src="img/sun.png" alt="Sun" />
+        <img class="back-face" src="img/back.png" alt="back face" />
+      </div>
+      <div class="memory-card" data-card="sun">
+        <img class="front-face" src="img/sun.png" alt="Sun" />
+        <img class="back-face" src="img/back.png" alt="back face" />
+      </div>
+      <div class="memory-card" data-card="star">
+        <img class="front-face" src="img/star.png" alt="Star" />
+        <img class="back-face" src="img/back.png" alt="back face" />
+      </div>
+      <div class="memory-card" data-card="star">
+        <img class="front-face" src="img/star.png" alt="Star" />
+        <img class="back-face" src="img/back.png" alt="back face" />
+      </div>
 
-<body>
-  <h1>Memory Game</h1>
-  <section class="memory-game">
-    <div class="memory-card" data-card="sun">
-      <img class="front-face" src="img/sun.png" alt="Sun" />
-      <img class="back-face" src="img/back.png" alt="back face" />
-    </div>
-    <div class="memory-card" data-card="sun">
-      <img class="front-face" src="img/sun.png" alt="Sun" />
-      <img class="back-face" src="img/back.png" alt="back face" />
-    </div>
-    <div class="memory-card" data-card="star">
-      <img class="front-face" src="img/star.png" alt="Star" />
-      <img class="back-face" src="img/back.png" alt="back face" />
-    </div>
-    <div class="memory-card" data-card="star">
-      <img class="front-face" src="img/star.png" alt="Star" />
-      <img class="back-face" src="img/back.png" alt="back face" />
-    </div>
+      <div class="memory-card" data-card="lover">
+        <img class="front-face" src="img/lover.png" alt="Lover" />
+        <img class="back-face" src="img/back.png" alt="back face" />
+      </div>
+      <div class="memory-card" data-card="lover">
+        <img class="front-face" src="img/lover.png" alt="Lover" />
+        <img class="back-face" src="img/back.png" alt="back face" />
+      </div>
 
-    <div class="memory-card" data-card="lover">
-      <img class="front-face" src="img/lover.png" alt="Lover" />
-      <img class="back-face" src="img/back.png" alt="back face" />
-    </div>
-    <div class="memory-card" data-card="lover">
-      <img class="front-face" src="img/lover.png" alt="Lover" />
-      <img class="back-face" src="img/back.png" alt="back face" />
-    </div>
+      <div class="memory-card" data-card="moon">
+        <img class="front-face" src="img/moon.png" alt="Moon" />
+        <img class="back-face" src="img/back.png" alt="back face" />
+      </div>
+      <div class="memory-card" data-card="moon">
+        <img class="front-face" src="img/moon.png" alt="Moon" />
+        <img class="back-face" src="img/back.png" alt="back face" />
+      </div>
 
+      <div class="memory-card" data-card="tower">
+        <img class="front-face" src="img/tower.png" alt="Tower" />
+        <img class="back-face" src="img/back.png" alt="back face" />
+      </div>
+      <div class="memory-card" data-card="tower">
+        <img class="front-face" src="img/tower.png" alt="Tower" />
+        <img class="back-face" src="img/back.png" alt="back face" />
+      </div>
 
-    <div class="memory-card" data-card="moon">
-      <img class="front-face" src="img/moon.png" alt="Moon" />
-      <img class="back-face" src="img/back.png" alt="back face" />
+      <div class="memory-card" data-card="wheelOfFortune">
+        <img
+          class="front-face"
+          src="img/wheelOfFortune.png"
+          alt="Wheel of fortune"
+        />
+        <img class="back-face" src="img/back.png" alt="back face" />
+      </div>
+      <div class="memory-card" data-card="wheelOfFortune">
+        <img
+          class="front-face"
+          src="img/wheelOfFortune.png"
+          alt="Wheel of fortune"
+        />
+        <img class="back-face" src="img/back.png" alt="back face" />
+      </div>
+    </section>
+    <div class="center">
+      <h3>Moves: <span id="numberMoves">0</span></h3>
     </div>
-    <div class="memory-card" data-card="moon">
-      <img class="front-face" src="img/moon.png" alt="Moon" />
-      <img class="back-face" src="img/back.png" alt="back face" />
+    <div class="center">
+      <button class="btn" onClick="document.location.reload(true)">
+        New game
+      </button>
     </div>
-
-    <div class="memory-card" data-card="tower">
-      <img class="front-face" src="img/tower.png" alt="Tower" />
-      <img class="back-face" src="img/back.png" alt="back face" />
-    </div>
-    <div class="memory-card" data-card="tower">
-      <img class="front-face" src="img/tower.png" alt="Tower" />
-      <img class="back-face" src="img/back.png" alt="back face" />
-    </div>
-
-    <div class="memory-card" data-card="wheelOfFortune">
-      <img class="front-face" src="img/wheelOfFortune.png" alt="Wheel of fortune" />
-      <img class="back-face" src="img/back.png" alt="back face" />
-    </div>
-    <div class="memory-card" data-card="wheelOfFortune">
-      <img class="front-face" src="img/wheelOfFortune.png" alt="Wheel of fortune" />
-      <img class="back-face" src="img/back.png" alt="back face" />
-    </div>
-  </section>
-  <div class="center">
-    <h3>Moves: <span id="numberMoves">0</span></h3>
-  </div>
-  <div class="center">
-    <button class="btn" onClick="document.location.reload(true)">New game</button>
-    <a href="/"> <button class="btn">Go to games</button></a>
-  </div>
-  <script src="memoryGame.js"></script>
-</body>
-
+    <script src="memoryGame.js"></script>
+  </body>
 </html>

@@ -160,3 +160,19 @@ function resetGame() {
   ];
   gameStart();
 }
+
+
+const menu = document.getElementById("main-menu");
+let lastScrollTop = 0;
+
+window.addEventListener("scroll", function(){
+   let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+   if (scrollTop > lastScrollTop){
+      // user is scrolling down
+      menu.classList.add("hidden");
+   } else {
+      // user is scrolling up
+      menu.classList.remove("hidden");
+   }
+   lastScrollTop = scrollTop;
+});

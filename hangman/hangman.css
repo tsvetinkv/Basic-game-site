@@ -39,7 +39,7 @@ p {
   font-size: 1.2em;
 }
 
-Button {
+button {
   background: #F8EDE3;
   border-radius: 5px;
   border: solid 1px black;
@@ -49,7 +49,7 @@ Button {
   margin: 0 10px 10px 0;
   outline: none;
 }
-Button:hover {
+button:hover {
   transition: 0.5s;
   background: black;
   border: solid 1px black;
@@ -82,4 +82,43 @@ Button:hover {
   background: black;
   border: solid 1px black;
   color: #F8EDE3;
+}
+
+
+.navigation {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(to right, #f518ff, #4c4ff6, #3db1ff);
+  padding: 20px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  font-size: 20px;
+  height: 20px;
+}
+
+.navigation a {
+  font-size: 20px;
+  color: white;
+  text-decoration: none;
+ display: inline-block;
+  padding: 8px 16px;
+  border-radius: 7px;
+  transition: background-color 0.2s ease-in-out;
+	margin: 0 10px;
+}
+
+.navigation a:hover {
+	background-color: #fff;
+	color: #000;
+  border-radius: 7px;
+}
+#bg{
+  margin-top: 65px;
+}
+
+#main-menu.hidden {
+  display: none;
 }

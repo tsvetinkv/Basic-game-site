@@ -1,6 +1,5 @@
 * {
   font-family: 'Garamond', serif;
-  /* font-size:x-large;*/
 }
 
 body,
@@ -39,12 +38,13 @@ nav li {
 }
 
 nav a {
+ display: inline-block;
+  border-radius: 12px;
+  transition: background-color 0.2s ease-in-out;
   font-size: 22px;
-  display: block;
   padding: 5px;
   color: white;
   text-decoration: none;
-  transition: background-color 0.5s ease;
 }
 
 nav a:hover {
