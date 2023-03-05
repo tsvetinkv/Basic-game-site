@@ -1,44 +1,60 @@
 <!-- <!DOCTYPE html> -->
 <html>
+  <head>
+    <title>Hangman</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Play hangman in English and guess the word before you run out of lives. Get hint if you need!"
+    />
+    <meta
+      name="keywords"
+      content="hangman, game, English, hints, vocabulary, 10 lives, guessing, word"
+    />
+    <meta
+      name="description"
+      content="Играйте бесеница на български език и познайте думата преди да изгубите 10 живота. Използвайте подсказка, ако е нужно!"
+    />
+    <meta
+      name="keywords"
+      content="бесеница, игра, български, подсказки, думи, 10 живота, познаване, догадки"
+    />
 
-<head>
-  <title>Hangman</title>
-  <meta charset="UTF-8" />
-  <link href="hangman.css" rel="stylesheet" type="text/css" />
-</head>
+    <link href="hangman.css" rel="stylesheet" type="text/css" />
+  </head>
 
-<body>   
- <div class="navigation" id="main-menu">
-  <a href="/">Home</a>
-  <a href="/ticTacToe">Tic tac toe</a>
-  <a href="/rockPaperScissors">Rock, paper, scissors</a>
-  <a href="/dinoGame">Dino</a>
-  <a href="/snake">Snake</a>
-  <a href="/memoryGame">Memory game</a>
-</div>
-  <button class="btn" id="bg">Change language</button>
-  <div class="wrapper">
-    <h1 id="title">Hangman</h1>
-    <p id="description">
-      Use the alphabet below to guess the word, or click hint to get a clue.
-    </p>
-  </div>
-
-  <div class="wrapper">
-    <div class="alphabetButton" id="alphabetButtons"></div>
-    <p id="categoryName"></p>
-    <div id="hold"></div>
-    <p id="mylives"></p>
-    <p id="clue">Clue -</p>
-    <canvas id="stickman">
-      This Text will show if the Browser does NOT support HTML5 Canvas tag
-    </canvas>
-    <div class="container">
-      <button class="btn" id="hint">Hint</button>
-      <button class="btn" id="reset">Play again</button>
+  <body>
+    <div class="navigation" id="main-menu">
+      <a href="/">Home</a>
+      <a href="/ticTacToe">Tic tac toe</a>
+      <a href="/rockPaperScissors">Rock, paper, scissors</a>
+      <a href="/dinoGame">Dino</a>
+      <a href="/snake">Snake</a>
+      <a href="/memoryGame">Memory game</a>
     </div>
-  </div>
-  <script src="hangman.js"></script>
-</body>
+    <button class="btn" id="bg">Change language</button>
+    <div class="wrapper">
+      <h1 id="title">Hangman</h1>
+      <p id="description">
+        Use the alphabet below to guess the word, or click hint to get a clue.
+      </p>
+    </div>
 
+    <div class="wrapper">
+      <div class="alphabetButton" id="alphabetButtons"></div>
+      <p id="categoryName"></p>
+      <div id="hold"></div>
+      <p id="mylives"></p>
+      <p id="clue">Clue -</p>
+      <canvas id="stickman">
+        This Text will show if the Browser does NOT support HTML5 Canvas tag
+      </canvas>
+      <div class="container">
+        <button class="btn" id="hint">Hint</button>
+        <button class="btn" id="reset">Play again</button>
+      </div>
+    </div>
+    <script src="hangman.js"></script>
+  </body>
 </html>

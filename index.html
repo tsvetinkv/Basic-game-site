@@ -5,6 +5,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="description" content="FlyTime Games is a collection of fun and exciting games to play online. Choose from a variety of games including Tic Tac Toe, Hangman, Snake game and more.">
+	<meta name="keywords" content="FlyTime Games, online games, Tic Tac Toe, Hangman,Rock, paper, scissors, Dino, Snake, Memory game, fun ">
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <title>Flytime Games</title>
@@ -171,20 +173,19 @@
         </div>
     </footer>
     <script>
-        var menu = document.getElementById("main-menu");
-var lastScrollTop = 0;
-
-window.addEventListener("scroll", function(){
-   var scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-   if (scrollTop > lastScrollTop){
+     const menu = document.getElementById("main-menu");
+     let lastScrollTop = 0;
+     window.addEventListener("scroll", function(){
+     let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+     if (scrollTop > lastScrollTop){
       // user is scrolling down
       menu.classList.add("hidden");
-   } else {
+     } else {
       // user is scrolling up
       menu.classList.remove("hidden");
-   }
-   lastScrollTop = scrollTop;
-});
+     }
+        lastScrollTop = scrollTop;
+     });
 
     </script>
 </body>

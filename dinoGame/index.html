@@ -1,34 +1,41 @@
 <!DOCTYPE html>
 <html>
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" , content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" , content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Play the classic dino game with 6 types of cactuses. Jump over obstacles and score points."
+    />
+    <meta
+      name="keywords"
+      content="dino game, 6 types of cactuses, jumping game, classic game, score points, dinosaur, game"
+    />
     <title>Dinosaur Game</title>
-    <link rel="stylesheet" href="dino.css">
+    <link rel="stylesheet" href="dino.css" />
+  </head>
 
-</head>
-
-<body>
+  <body>
     <div class="container">
-        <div class="navigation">
-          <a href="/">Home</a>
-          <a href="/ticTacToe">Tic tac toe</a>
-          <a href="/rockPaperScissors">Rock, paper, scissors</a>
-          <a href="/hangman">Hangman</a>
-          <a href="/snake">Snake</a>
-          <a href="/memoryGame">Memory game</a>
-        </div>
-        <h1 id="result"></h1>
+      <div class="navigation">
+        <a href="/">Home</a>
+        <a href="/ticTacToe">Tic tac toe</a>
+        <a href="/rockPaperScissors">Rock, paper, scissors</a>
+        <a href="/hangman">Hangman</a>
+        <a href="/snake">Snake</a>
+        <a href="/memoryGame">Memory game</a>
       </div>
-  
+      <h2 id="result"></h2>
+    </div>
+
     <h1>Dinosaur Game</h1>
 
     <canvas id="board"></canvas>
-    <button class="btn" id="playAgain" onClick="document.location.reload(true)">Play again</button>
-    <a href="/" ><button class="btn">Go to games</button></a>
+    <button class="btn" id="playAgain" onClick="document.location.reload(true)">
+      Play again
+    </button>
+    <a href="/"><button class="btn">Go to games</button></a>
 
     <script src="dino.js"></script>
-</body>
-
+  </body>
 </html>
