@@ -19,9 +19,6 @@
     <nav id="main-menu">
       <ul>
         <li>
-            <a class="game-name" href="aboutMe.html">About me</a>
-        </li>
-        <li>
           <a class="game-name" href="./ticTacToe">Tic tac toe</a>
         </li>
         <li>
@@ -38,6 +35,9 @@
         </li>
         <li>
           <a class="game-name" href="./memoryGame">Memory game</a>
+        </li>
+        <li>
+          <a class="game-name" href="aboutMe.html">About</a>
         </li>
       </ul>
     </nav>
@@ -198,22 +198,5 @@
         </p>
       </div>
     </footer>
-
-    <script>
-      const menu = document.getElementById("main-menu");
-      let lastScrollTop = 0;
-      window.addEventListener("scroll", function () {
-        let scrollTop =
-          window.pageYOffset || document.documentElement.scrollTop;
-        if (scrollTop > lastScrollTop) {
-          // user is scrolling down
-          menu.classList.add("hidden");
-        } else {
-          // user is scrolling up
-          menu.classList.remove("hidden");
-        }
-        lastScrollTop = scrollTop;
-      });
-    </script>
   </body>
 </html>
