@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://flytimegames.netlify.app/sitemap.xml
