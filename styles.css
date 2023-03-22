@@ -153,6 +153,12 @@ button:hover {
   transform: scale(0.9);
 }
 
+.buttons-container {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
 figure {
   position: relative;
   display: inline-block;
