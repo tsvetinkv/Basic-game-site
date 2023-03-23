@@ -181,6 +181,12 @@ body {
     color: #fff;
 }
 
+.buttons-container {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+
 .about-para p {
     font-weight: 300;
     padding: 0.5rem;
