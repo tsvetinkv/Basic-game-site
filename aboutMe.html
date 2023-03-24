@@ -1,78 +1,124 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <title>About Me</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" href="aboutMe.css" />
-  </head>
-  <body>
-    <div class="about-wrapper">
-      <div class="about-left">
-        <div class="about-left-content">
-           
-          <div>
-            <div class="shadow">
-              <div class="about-img">
-                <img src="images/me1.jpg" alt="about image" />
-                <img src="images/me2.jpg" alt="about image" />
-                <img src="images/me3.jpg" alt="about image" />
-              </div>
-            </div>
 
-            <h2>Цвети Николова</h2>
-            <h3>Ученичка</h3>
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>About Me</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
+    integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="aboutMe.css" />
+</head>
+
+<body>
+  <div class="about-wrapper">
+    <div class="about-left">
+      <div class="about-left-content">
+
+        <div>
+          <div class="shadow">
+            <div class="about-img">
+              <img src="images/me1.jpg" alt="about image" />
+              <img src="images/me2.jpg" alt="about image" />
+              <img src="images/me3.jpg" alt="about image" />
+            </div>
           </div>
 
-          <ul class="icons">
-            <a href="https://www.facebook.com/tsvetinkv" style="text-decoration: none" target="_blank">
-              <li><i class="fab fa-facebook-f"></i></li>
-            </a>
-            <a href="https://www.instagram.com/cvetinkv/" style="text-decoration: none" target="_blank">
-              <li>
-                <i class="fab fa-instagram"></i>
-              </li>
-            </a>
-          </ul>
+          <h2 id="name">Tsveti Nikolova</h2>
+          <h3 id="student">Student</h3>
         </div>
-      </div>
 
-      <div class="about-right">
+        <ul class="icons">
+          <a href="https://www.facebook.com/tsvetinkv" style="text-decoration: none" target="_blank">
+            <li><i class="fab fa-facebook-f"></i></li>
+          </a>
+          <a href="https://www.instagram.com/cvetinkv/" style="text-decoration: none" target="_blank">
+            <li>
+              <i class="fab fa-instagram"></i>
+            </li>
+          </a>
+        </ul>
+      </div>
+    </div>
+    <div class="about-right">
+      <div class="buttons-container">
         <a href="index.html" style="text-decoration: none;">
-         <button class="home-btn"> Go to home
+          <button class="home-btn"> Go to home
             <div class="icon">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path fill="none" d="M0 0h24v24H0z"></path><path fill="currentColor" d="M16.172 11l-5.364-5.364 1.414-1.414L20 12l-7.778 7.778-1.414-1.414L16.172 13H4v-2z"></path></svg>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+                <path fill="none" d="M0 0h24v24H0z"></path>
+                <path fill="currentColor"
+                  d="M16.172 11l-5.364-5.364 1.414-1.414L20 12l-7.778 7.778-1.414-1.414L16.172 13H4v-2z"></path>
+              </svg>
             </div>
           </button>
         </a>
-        <div class="about-btns">
-          <a href="mailto: cnikolova95@gmail.com"  style="text-decoration: none;">
-            <button type="button" class="btn btn-pink">Email</button>
-          </a>
-          <a href="https://github.com/tsvetinkv" style="text-decoration: none;" target="_blank">
-            <button type="button" class="btn btn-white">Git hub</button>
-          </a>
-        </div>
-        <h2>Koя съм аз?</h2>
-        <div class="about-para">
-          <p>
-            Казвам се Цвети Николова и съм ученичка в 11 клас,
-            паралелка приложен програмист. Интересувам се от програмиране още от
-            6 клас и изпитвам голяма страст към научаването на нови неща. Когато
-            искам нещо, не се отказвам и бих направила всичко възможно, за да
-            бъда най-добрата. Имам високи амбиции и се стремя към съвършенство
-            във всичко, което правя.
-          </p>
-          <p>
-            Освен това съм добра в дизайна и умея да правя добри снимки. Когато
-            не работя по даден проект, обичам да чета или да научавам нещо ново.
-            В бъдеще искам да стана софтуерен инженер, защото програмирането е
-            истинската ми страст.
-          </p>
-        </div>
+        </a>
+        <button id="changeLang" class="btn btn-white">Change Language</button>
+      </div>
+      <div class="about-btns">
+        <a href="mailto: cnikolova95@gmail.com" style="text-decoration: none;">
+          <button type="button" class="btn btn-pink">Email</button>
+        </a>
+        <a href="https://github.com/tsvetinkv" style="text-decoration: none;" target="_blank">
+          <button type="button" class="btn btn-white">Git hub</button>
+        </a>
+      </div>
+      <h2 id="whoAmI">Who am i?</h2>
+      <div class="about-para" style="font-size: larger;">
+        <p>
+          My name is Tsveti Nikolova and I am an 11th grade student,
+          an applied programmer class. I have been interested in
+          programming since 6th grade and have a great passion for
+          learning new things. When I want something, I don't give
+          up and I would do my best to be the best. I have high
+          ambitions and strive for perfection in everything I do.
+        </p>
+        <p>
+          I'm also good at design and I know how to take good pictures.
+          When I'm not working on a project, I like to read or learn something new.
+          In the future, I want to become a software engineer because programming is my true passion.
+        </p>
       </div>
     </div>
-  </body>
+  </div>
+</body>
+<script>
+  let language = "en";
+  const myName = document.getElementById("name");
+  const unerlineInfoAboutMe = document.getElementById("student");
+  const whoAmIQuestion = document.getElementById("whoAmI");
+  const about = document.querySelector(".about-para");
+  const changeLanguageButton = document.getElementById("changeLang");
+  const translations = {
+    en: {
+      name: "Tsveti Nikolova",
+      position: "student",
+      whoAmI: "Who am i?",
+      aboutParagraf: "My name is Tsveti Nikolova and I am an 11th grade student, an applied programmer class. I have been interested in programming since 6th grade and have a great passion for learning new things. When I want something, I don't give up and I would do my best to be the best. I have high ambitions and strive for perfection in everything I do. I'm also good at design and I know how to take good pictures. When I'm not working on a project, I like to read or learn something new. In the future, I want to become a software engineer because programming is my true passion.",
+      chngLang: "Change language"
+    },
+    bg: {
+      name: "Цвети Николова",
+      position: "ученичка",
+      whoAmI: "Коя съм аз?",
+      aboutParagraf: "Казвам се Цвети Николова и съм ученичка в 11 клас, паралелка приложен програмист. Интересувам се от програмиране още от 6 клас и изпитвам голяма страст към научаването на нови неща. Когато искам нещо, не се отказвам и бих направила всичко възможно, за да бъда най-добрата. Имам високи амбиции и се стремя към съвършенство във всичко, което правя. Освен това съм добра в дизайна и умея да правя добри снимки. Когато не работя по даден проект, обичам да чета или да научавам нещо ново. В бъдеще искам да стана софтуерен инженер, защото програмирането е истинската ми страст.",
+      chngLang: "Смени езика"
+    },
+  };
+
+  changeLanguageButton.addEventListener("click", cahngeLanguage);
+
+  function cahngeLanguage() {
+    language = language === "en" ? "bg" : "en";
+    changeLanguageButton.innerHTML = translations[language].chngLang;
+    myName.innerHTML = translations[language].name;
+    unerlineInfoAboutMe.innerHTML = translations[language].position;
+    whoAmIQuestion.innerHTML = translations[language].whoAmI;
+    about.innerHTML = translations[language].aboutParagraf;
+  }
+</script>
+
 </html>
