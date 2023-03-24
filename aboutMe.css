@@ -185,7 +185,7 @@ body {
     display: flex;
     align-items: center;
     gap: 16px;
-  }
+}
 
 .about-para p {
     font-weight: 300;
@@ -193,23 +193,6 @@ body {
     opacity: 0.8;
     font-size: 21px;
 }
-
-@media screen and (min-width: 992px) {
-    .about-wrapper {
-        display: grid;
-        grid-template-columns: repeat(2, 2fr);
-    }
-
-    .about-left {
-        position: relative;
-    }
-
-    .about-left-content {
-        position: absolute;
-        width: 80%
-    }
-}
-
 
 .home-btn {
     background: #12192c;
@@ -229,9 +212,9 @@ body {
     position: relative;
     height: 2.8em;
     padding-right: 3.3em;
-  }
-  
-  .home-btn .icon {
+}
+
+.home-btn .icon {
     background: white;
     margin-left: 1em;
     position: absolute;
@@ -244,23 +227,44 @@ body {
     box-shadow: 0.1em 0.1em 0.6em 0.2em #7b52b9;
     right: 0.3em;
     transition: all 0.3s;
-  }
-  
-  .home-btn:hover .icon {
+    cursor: pointer;
+}
+
+
+.home-btn:hover .icon {
     width: calc(100% - 0.6em);
-  }
-  
-  .home-btn .icon svg {
+}
+
+.home-btn .icon svg {
     width: 1.1em;
     transition: transform 0.3s;
     color: #7b52b9;
-  }
-  
-  .home-btn:hover .icon svg {
+}
+
+.home-btn:hover .icon svg {
     transform: translateX(0.1em);
-  }
-  
-  .home-btn:active .icon {
+}
+
+.home-btn:active .icon {
     transform: scale(0.95);
-  }
-  
+}
+
+changeLang:hover {
+    cursor: pointer;
+}
+
+@media screen and (min-width: 992px) {
+    .about-wrapper {
+        display: grid;
+        grid-template-columns: repeat(2, 2fr);
+    }
+
+    .about-left {
+        position: relative;
+    }
+
+    .about-left-content {
+        position: absolute;
+        width: 80%
+    }
+}
