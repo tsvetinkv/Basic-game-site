@@ -21,30 +21,30 @@ oneVsOne.addEventListener("click", () => {
 againstComputer.addEventListener("click", (e) => {
   reset();
   isComputerGame = true;
+  makeFirstComputerMove();
 });
-resetButton.addEventListener("click", reset);
 
+function makeFirstComputerMove() {
+  const botMove = minimax(currentBoard.slice(), X).index;
+  placeXorO(X, botMove);
+}
+resetButton.addEventListener("click", reset);
 function onTurn(index) {
   if (gameEnded || currentBoard[index]) {
     return;
   }
-  const currentPlayer = isX ? X : O;
-  placeXorO(currentPlayer, index);
-
-  const isWinner = checkIfWinner(currentBoard, currentPlayer);
-
+  placeXorO(O, index);
+  const isWinner = checkIfWinner(currentBoard, O);
   if (isWinner) {
-    onGameEnd(`Winner is ${currentPlayer}`);
+    onGameEnd(`Winner is ${O}`);
   } else if (isDraw()) {
     onGameEnd("Draw!");
   } else if (isComputerGame) {
     const botMove = minimax(currentBoard.slice(), X).index;
-    placeXorO(O, botMove);
-    if (checkIfWinner(currentBoard, O)) {
-      onGameEnd(`Winner is ${O}`);
+    placeXorO(X, botMove);
+    if (checkIfWinner(currentBoard, X)) {
+      onGameEnd(`Winner is ${X}`);
     }
-  } else {
-    isX = !isX;
   }
 }
 
