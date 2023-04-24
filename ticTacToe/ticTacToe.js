@@ -69,6 +69,7 @@ function reset() {
   gameEnded = false;
   tds.forEach((td) => (td.innerHTML = ""));
   result.innerHTML = "";
+  if (isComputerGame) makeFirstComputerMove();
 }
 
 function emptyIndexies(board) {
