@@ -167,14 +167,14 @@
         <img src="./images/minesweeper.png" />
         <figcaption>
           <h3 class="howToPlay">How to play</h3>
-          <p id="minesweeper/Description">
+          <p id="minesweeperDescription">
           
-              In Minesweeper, right-clicking reveals the content of a square,
-              while left-clicking sets a flag. Analyze the numbers to uncover nearby mines.
+              In Minesweeper, left-clicking reveals the content of a square,
+              while right-clicking sets a flag. Analyze the numbers to uncover nearby mines.
               For instance, a "2" means two neighboring squares have mines. 
               Avoid clicking on squares with mines to continue playing.
           </p>
-          <a href="/minesweeper/" class="play" id="playButtons">Play</a>
+          <a href="/minesweeper" class="play" id="playButtons">Play</a>
         </figcaption>
       </figure>
     </section>
@@ -233,6 +233,7 @@
     const memoryGameDescription = document.getElementById(
       "memoryGameDescription"
     );
+    const minesweeperDescription = document.getElementById("minesweeperDescription");
     const aboutHeader = document.getElementById("aboutHeader");
     const aboutText = document.getElementById("aboutText");
     const copiright = document.getElementById("copiright");
@@ -244,6 +245,7 @@
     const navigationDino = document.getElementById("navDino");
     const navigationSnakes = document.getElementById("navSnake");
     const navigationMemoryGame = document.getElementById("navMemory");
+    const navigationMinesweeper = document.getElementById("navMinesweeper");
     const navigationAbout = document.getElementById("navAbout");
 
     changeLanguageButton.addEventListener("click", switchLanguage);
@@ -268,6 +270,7 @@
           "Make the snake grow longer and your score goes up by eating the apple. Use 'w' to go up, 's' to go down, 'a' to go left, 'd' to go right. You cannot stop the snake or make it go backwards. If you hit the walls or the tail the game is over. Can be played only on computer.",
         memoryGame:
           "The cards have a pictures on one side and each picture appears on two cards. The game starts with all the cards face down and you take turns to turn over two cards. If the two cards have the same picture, then they are guessed, otherwise the cards turns face down again",
+        minesweeper: 'In Minesweeper, left-clicking reveals the content of a square, while right-clicking sets a flag. Analyze the numbers to uncover nearby mines. For instance, a "2" means two neighboring squares have mines. Avoid clicking on squares with mines to continue playing.',
         aboutHeding: "ABOUT",
         aboutText:
           "My name is Tsveti and I am a student in 11th grade class of application programmer in PPMG 'Acad. Ivan Tsenov'",
@@ -278,6 +281,7 @@
         navDino: "Dino",
         navSnake: "Snake",
         navMemory: "Memory game",
+        navMinesweeper: "Minesweeper",
         navAbout: "About",
       },
       bg: {
@@ -299,6 +303,7 @@
           "Накарайте змията да расте по-дългa и резултатът ви да се повишaвa, като ядете ябълки. Използвайте 'w', за да отидете нагоре, 's', за да слезете,'a', за да отидете наляво, 'd', за да отидете надясно. Ако ударите стените или себе си играта свършва. Може да се играе само на компютър.",
         memoryGame:
           "Срещат се 6 двойки двустранни карти. Играта започва с всички карти с лицето надолу и играчът обръща две карти. Ако двете карти имат една и съща картина, тогава те се отгатват, в противен случай картите отново се обръщат с лицето надолу.",
+        minesweeper: 'В играта минички с ляв бутон на мишката се разкрива съдържанието на поле, а с десен бутон на мишката се поставя флаг. Анализирайте числата, за да откриете близките бомби. Например "2" означава, че две съседни квадратчета имат бомба. За да не загубите, избягвайте да кликате върху квадрати с бомби.',
         aboutHeding: "За мен",
         aboutText:
           'Казвам се Цвети и съм ученичка в паралелка приложен програмист в ППМГ "Акад. Иван Ценов".',
@@ -309,6 +314,7 @@
         navDino: "Динозавър",
         navSnake: "Змия",
         navMemory: "Игра за памет",
+        navMinesweeper: "Минички",
         navAbout: "За мен",
       },
     };
@@ -332,6 +338,7 @@
       dinoDescription.innerHTML = translations[language].dino;
       snakeDescription.innerHTML = translations[language].snake;
       memoryGameDescription.innerHTML = translations[language].memoryGame;
+      minesweeperDescription.innerHTML = translations[language].minesweeper;
       aboutHeader.innerHTML = translations[language].aboutHeding;
       aboutText.innerHTML = translations[language].aboutText;
       copiright.innerHTML = translations[language].copiright;
@@ -342,6 +349,7 @@
       navigationDino.innerHTML = translations[language].navDino;
       navigationSnakes.innerHTML = translations[language].navSnake;
       navigationMemoryGame.innerHTML = translations[language].navMemory;
+      navigationMinesweeper.innerHTML = translations[language].navMinesweeper;
       navigationAbout.innerHTML = translations[language].navAbout;
     }
   </script>
