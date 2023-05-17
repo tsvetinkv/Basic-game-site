@@ -1,65 +1,100 @@
-const tds = document.querySelectorAll("td"); // all column in the table
+const tds = document.querySelectorAll("td"); // all columns in the table
 const resetButton = document.getElementById("reset"); // reset button
 const oneVsOne = document.getElementById("1vs1"); // 1vs1 button
 const againstComputer = document.getElementById("computer"); // Against computer button
-const result = document.querySelector("#result"); //message when the game ends
+const result = document.querySelector("#result"); // message when the game ends
 let isX = true;
 let gameEnded = false;
 let isComputerGame = false;
-const X = "X",
-  O = "O";
+const X = "X";
+const O = "O";
 
 const BOARD = [null, null, null, null, null, null, null, null, null];
 
 let currentBoard = BOARD.slice();
 
+function placeXorO(player, position) {
+  tds[position].innerHTML = player;
+  currentBoard[position] = player;
+}
+
+function makeComputerMove() {
+  const bestMove = minimax(currentBoard, X).index;
+  placeXorO(X, bestMove); // Place "X" for the computer
+  isX = false; // Set isX to false to indicate it's the player's turn (O)
+  
+  if (checkIfWinner(currentBoard, X)) {
+    onGameEnd(`Winner is ${X}`);
+  } else if (isDraw()) {
+    onGameEnd("Draw!");
+  }
+}
+
 tds.forEach((td, index) => td.addEventListener("click", () => onTurn(index)));
+
 oneVsOne.addEventListener("click", () => {
   isComputerGame = false;
   reset();
 });
-againstComputer.addEventListener("click", (e) => {
-  reset();
+
+againstComputer.addEventListener("click", () => {
   isComputerGame = true;
-  makeFirstComputerMove();
+  reset();
+  makeComputerMove();
 });
 
-function makeFirstComputerMove() {
-  const botMove = minimax(currentBoard.slice(), X).index;
-  placeXorO(X, botMove);
-}
 resetButton.addEventListener("click", reset);
+
 function onTurn(index) {
   if (gameEnded || currentBoard[index]) {
     return;
   }
-  placeXorO(O, index);
-  const isWinner = checkIfWinner(currentBoard, O);
-  if (isWinner) {
-    onGameEnd(`Winner is ${O}`);
-  } else if (isDraw()) {
-    onGameEnd("Draw!");
-  } else if (isComputerGame) {
-    const botMove = minimax(currentBoard.slice(), X).index;
-    placeXorO(X, botMove);
+
+  if (isX) {
+    placeXorO(X, index);
     if (checkIfWinner(currentBoard, X)) {
       onGameEnd(`Winner is ${X}`);
+    } else if (isDraw()) {
+      onGameEnd("Draw!");
     }
+  } else {
+    placeXorO(O, index);
+    if (checkIfWinner(currentBoard, O)) {
+      onGameEnd(`Winner is ${O}`);
+    } else if (isDraw()) {
+      onGameEnd("Draw!");
+    }
+  }
+
+  isX = !isX; // Toggle the value of isX for the next turn
+  if (isComputerGame && !gameEnded) {
+    makeComputerMove();
   }
 }
 
 function checkIfWinner(board, player) {
-  if (
-    (board[0] === player && board[1] === player && board[2] === player) ||
-    (board[0] === player && board[3] === player && board[6] === player) ||
-    (board[0] === player && board[4] === player && board[8] === player) ||
-    (board[1] === player && board[4] === player && board[7] === player) ||
-    (board[2] === player && board[5] === player && board[8] === player) ||
-    (board[3] === player && board[4] === player && board[5] === player) ||
-    (board[6] === player && board[7] === player && board[8] === player) ||
-    (board[2] === player && board[4] === player && board[6] === player)
-  )
-    return true;
+  const winningCombinations = [
+    [0, 1, 2],
+    [0, 3, 6],
+    [0, 4, 8],
+    [1, 4, 7],
+    [2, 5, 8],
+    [2, 4, 6],
+    [3, 4, 5],
+    [6, 7, 8],
+  ];
+
+  for (const combination of winningCombinations) {
+    const [a, b, c] = combination;
+    if (
+      board[a] === player &&
+      board[b] === player &&
+      board[c] === player
+    ) {
+      return true;
+    }
+  }
+
   return false;
 }
 
@@ -69,61 +104,71 @@ function reset() {
   gameEnded = false;
   tds.forEach((td) => (td.innerHTML = ""));
   result.innerHTML = "";
-  if (isComputerGame) makeFirstComputerMove();
 }
 
-function emptyIndexies(board) {
-  const freeSpaces = [];
-  board.forEach((td, index) => {
-    if (td === null) {
-      freeSpaces.push(index);
+function emptyIndices(board) {
+  const indices = [];
+  for (let i = 0; i < board.length; i++) {
+    if (board[i] === null) {
+      indices.push(i);
     }
-  });
-
-  return freeSpaces;
+  }
+  return indices;
 }
 
-function minimax(newBoard, player) {
-  var availSpots = emptyIndexies(newBoard);
+function isDraw() {
+  return !currentBoard.includes(null);
+}
 
-  if (checkIfWinner(newBoard, X)) {
-    return { score: -10 };
-  } else if (checkIfWinner(newBoard, O)) {
-    return { score: 10 };
-  } else if (availSpots.length === 0) {
+function onGameEnd(message) {
+  result.innerHTML = message;
+  gameEnded = true;
+}
+
+function minimax(board, player) {
+  const availableMoves = emptyIndices(board);
+
+  if (checkIfWinner(board, X)) {
+    return { score: -1 };
+  } else if (checkIfWinner(board, O)) {
+    return { score: 1 };
+  } else if (availableMoves.length === 0) {
     return { score: 0 };
   }
-  var moves = [];
-  for (var i = 0; i < availSpots.length; i++) {
-    var move = {};
-    move.index = availSpots[i];
-    newBoard[availSpots[i]] = player;
 
-    if (player == O) {
-      var result = minimax(newBoard, X);
+  const moves = [];
+
+  for (let i = 0; i < availableMoves.length; i++) {
+    const move = {};
+    move.index = availableMoves[i];
+
+    board[availableMoves[i]] = player;
+
+    if (player === X) {
+      const result = minimax(board, O);
       move.score = result.score;
     } else {
-      var result = minimax(newBoard, O);
+      const result = minimax(board, X);
       move.score = result.score;
     }
 
-    newBoard[availSpots[i]] = move.index;
+    board[availableMoves[i]] = null;
 
     moves.push(move);
   }
 
-  var bestMove;
-  if (player === O) {
-    var bestScore = -Infinity;
-    for (var i = 0; i < moves.length; i++) {
+  let bestMove;
+  if (player === X) {
+    let bestScore = -Infinity;
+    for (let i = 0; i < moves.length; i++) {
       if (moves[i].score > bestScore) {
         bestScore = moves[i].score;
         bestMove = i;
       }
     }
   } else {
-    var bestScore = Infinity;
-    for (var i = 0; i < moves.length; i++) {
+    let bestScore = Infinity;
+    for (let i = 0; i < moves.length; i++) {
       if (moves[i].score < bestScore) {
         bestScore = moves[i].score;
         bestMove = i;
@@ -132,24 +177,4 @@ function minimax(newBoard, player) {
   }
 
   return moves[bestMove];
-}
-
-function placeXorO(player, position) {
-  tds[position].innerHTML = player;
-  currentBoard[position] = player;
-}
-
-function isDraw() {
-  let draw = true;
-  currentBoard.forEach((td) => {
-    if (td === null) {
-      draw = false;
-    }
-  });
-  return draw;
-}
-
-function onGameEnd(message) {
-  result.innerHTML = message;
-  gameEnded = true;
 }
