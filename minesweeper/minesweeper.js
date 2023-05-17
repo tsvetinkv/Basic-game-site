@@ -61,7 +61,7 @@ document.addEventListener('DOMContentLoaded', () => {
     //add Flag with right click
     function addFlag(square) {
       if (isGameOver) return
-      if (!square.classList.contains('checked') && (flags < bombAmount)) {
+      if (!square.classList.contains('checked') && (flags <= bombAmount)) {
         if (!square.classList.contains('flag')) {
           square.classList.add('flag')
           square.innerHTML = ' 🚩'
