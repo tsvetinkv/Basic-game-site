@@ -103,7 +103,59 @@ body{
   
   #result {
     margin-top: 5px;
-    color: #ff3636;
+    color: #ff0000;
+  }
+  button {
+    text-decoration: none;
+    position: relative;
+    border: none;
+    font-size: 15px;
+    font-family: inherit;
+    color: #fff;
+    width: 7.5em;
+    height: 2em;
+    line-height: 1.5em;
+    text-align: center;
+    background: linear-gradient(90deg,rgb(107, 206, 255),rgb(255, 119, 255),rgb(251, 251, 102),rgb(110, 207, 255));
+    background-size: 300%;
+    color: rgba(34, 34, 34, 0.773);
+    border-radius: 20px;
+    z-index: 1;
   }
   
+  button:hover {
+    animation: ani 8s linear infinite;
+    border: none;
+  }
   
+  @keyframes ani {
+    0% {
+      background-position: 0%;
+    }
+  
+    100% {
+      background-position: 400%;
+    }
+  }
+  
+  button:before {
+    content: '';
+    position: absolute;
+    top: -5px;
+    left: -5px;
+    right: -5px;
+    bottom: -5px;
+    z-index: -1;
+    background: linear-gradient(90deg,rgb(157, 222, 255),rgb(255, 166, 251),rgb(255, 255, 175),rgb(121, 210, 254));
+    background-size: 400%;
+    border-radius: 35px;
+    transition: 1s;
+  }
+  
+  button:hover::before {
+    filter: blur(20px);
+  }
+  
+  button:active {
+    background: linear-gradient(32deg,rgb(136, 215, 255),rgb(234, 172, 255),rgb(255, 255, 77),rgb(154, 221, 255));
+  }
