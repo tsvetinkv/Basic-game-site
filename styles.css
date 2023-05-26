@@ -51,6 +51,7 @@ nav a:hover {
   background-color: white;
   color: black;
 }
+
 .game-name {
   text-align: center;
 }
@@ -252,12 +253,10 @@ figure figcaption p {
 }
 
 figure figcaption .play {
-  background-image: linear-gradient(
-    30deg,
-    #77ff72 0%,
-    #00d9ff 45%,
-    #0550ff 90%
-  );
+  background-image: linear-gradient(30deg,
+      #77ff72 0%,
+      #00d9ff 45%,
+      #0550ff 90%);
 
   margin: 9px;
 
@@ -301,12 +300,10 @@ figure figcaption .play:active {
 
 .site-footer {
   background: rgb(213, 147, 255);
-  background: linear-gradient(
-    281deg,
-    rgba(213, 147, 255, 0.577468487394958) 0%,
-    rgba(255, 104, 229, 0.5998774509803921) 50%,
-    rgba(102, 159, 255, 0.6783088235294117) 100%
-  );
+  background: linear-gradient(281deg,
+      rgba(213, 147, 255, 0.577468487394958) 0%,
+      rgba(255, 104, 229, 0.5998774509803921) 50%,
+      rgba(102, 159, 255, 0.6783088235294117) 100%);
   /* padding: 10px 0 0 0;
      clear:both; */
   /* margin-right: -100vw;
@@ -378,10 +375,36 @@ figure figcaption .play:active {
 }
 
 
+#goUp {
+  position: fixed;
+  bottom: 20px;
+  right: 10px;
+  z-index: 10;
+  cursor: pointer;
+  min-width: 75px;
+  height: 41px;
+}
+
+
+#goUp span {
+  background-color: rgb(5, 6, 45);
+  padding: 10px 12px;
+  border-radius: 6px;
+  width: 44px;
+  height: 14px;
+  transition: 300ms;
+}
+
+#goUp:hover span {
+  background: none;
+}
+
+
 @media only screen and (max-width: 600px) {
   .info-about-site {
     padding: 20px;
   }
+
   .info-about-site h4 {
     margin: 0;
   }
@@ -415,7 +438,7 @@ figure figcaption .play:active {
     width: 45%;
     min-width: 250px;
   }
-  
+
 }
 
 

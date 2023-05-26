@@ -14,12 +14,10 @@
     />
     <link rel="stylesheet" href="styles.css" />
     <title>Flytime Games</title>
-    <link rel="icon" href="/images/logoIcon.png" type="image/icon type">
-
+    <link rel="icon" href="/images/logoIcon.png" type="image/icon type" />
   </head>
 
   <body>
-    <!--make  button for go up?-->
     <nav id="main-menu">
       <ul>
         <li>
@@ -80,6 +78,10 @@
       </div>
     </section>
     <center>
+      <a href="#games" class="btn" id="goUp">
+        <span class="text" id="go-to-games-text">Go up</span>
+      </a>
+
       <section id="games">
         <figure class="image-block">
           <h1 id="ticTacToeHed">Tic Tac Toe</h1>
@@ -260,6 +262,8 @@
       </div>
     </footer>
     <script>
+      // Get the button:
+      let mybutton = document.getElementById("goUp");
       let language = "en";
       const changeLanguageButton = document.getElementById(
         "change-language-text"
@@ -322,7 +326,8 @@
             "The cards have a pictures on one side and each picture appears on two cards. The game starts with all the cards face down and you take turns to turn over two cards. If the two cards have the same picture, then they are guessed, otherwise the cards turns face down again",
           minesweeper:
             'In Minesweeper, left-clicking reveals the content of a square, while right-clicking sets a flag. Analyze the numbers to uncover nearby mines. For instance, a "2" means two neighboring squares have mines. Avoid clicking on squares with mines to continue playing.',
-          wordle: "  In Wordle, your mission is to Guess the Word in 6 tries using valid 5-letter words. Keep an eye on the changing tile colors for clues. Yellow means a letter is in the word but in the wrong position, red indicates a letter that's not in the word, and green signifies a correct letter in the right place.",
+          wordle:
+            "  In Wordle, your mission is to Guess the Word in 6 tries using valid 5-letter words. Keep an eye on the changing tile colors for clues. Yellow means a letter is in the word but in the wrong position, red indicates a letter that's not in the word, and green signifies a correct letter in the right place.",
           aboutHeding: "ABOUT",
           aboutText:
             "My name is Tsveti and I am a student in 11th grade class of application programmer in PPMG 'Acad. Ivan Tsenov'",
@@ -358,7 +363,8 @@
             "Срещат се 6 двойки двустранни карти. Играта започва с всички карти с лицето надолу и играчът обръща две карти. Ако двете карти имат една и съща картина, тогава те се отгатват, в противен случай картите отново се обръщат с лицето надолу.",
           minesweeper:
             'В играта минички с ляв бутон на мишката се разкрива съдържанието на поле, а с десен бутон на мишката се поставя флаг. Анализирайте числата, за да откриете близките бомби. Например "2" означава, че две съседни квадратчета имат бомба. За да не загубите, избягвайте да кликате върху квадрати с бомби.',
-          wordle: "В Wordle вашата мисия е да познаете думата в 6 опита, като използвате валидни думи от 5 букви. Следете променящите се цветове на плочките за улики. Жълтото означава, че тази буква е в думата, но на грешна позиция, червеното означаваче тази буква не е в думата, а зеленото означава че правилната буква на правилното място.",
+          wordle:
+            "В Wordle вашата мисия е да познаете думата в 6 опита, като използвате валидни думи от 5 букви. Следете променящите се цветове на плочките за улики. Жълтото означава, че тази буква е в думата, но на грешна позиция, червеното означаваче тази буква не е в думата, а зеленото означава че правилната буква на правилното място.",
           aboutHeding: "За мен",
           aboutText:
             'Казвам се Цвети и съм ученичка в паралелка приложен програмист в ППМГ "Акад. Иван Ценов".',
@@ -409,6 +415,22 @@
         navigationMinesweeper.innerHTML = translations[language].navMinesweeper;
         navigationWordle.innerHTML = translations[language].navWordle;
         navigationAbout.innerHTML = translations[language].navAbout;
+      }
+
+      // When the user scrolls down 20px from the top of the document, show the button
+      window.onscroll = function () {
+        scrollFunction();
+      };
+
+      function scrollFunction() {
+        if (
+          document.body.scrollTop > 1200 ||
+          document.documentElement.scrollTop > 1200
+        ) {
+          mybutton.style.display = "flex";
+        } else {
+          mybutton.style.display = "none";
+        }
       }
     </script>
   </body>
