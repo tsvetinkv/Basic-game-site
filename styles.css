@@ -381,17 +381,17 @@ figure figcaption .play:active {
   right: 10px;
   z-index: 10;
   cursor: pointer;
-  min-width: 75px;
-  height: 41px;
+  min-width: 34px;
+  height: 39px;
 }
 
 
 #goUp span {
   background-color: rgb(5, 6, 45);
-  padding: 10px 12px;
+  padding: 12px 10px;
   border-radius: 6px;
-  width: 44px;
-  height: 14px;
+  width: 10px;
+  height: 10px;
   transition: 300ms;
 }
 
