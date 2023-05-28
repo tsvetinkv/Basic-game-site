@@ -60,11 +60,10 @@ hr {
 
 
 .keyboard-row {
-    width: 500px;
+    width: 440px;
     margin: 0 auto;
     display: flex;
     flex-wrap: wrap;
-    padding-left: 80px;
 }
 
 .key-tile {
